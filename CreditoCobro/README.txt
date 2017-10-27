@@ -105,3 +105,7 @@ CREATE TABLE [P_Cuota] (
 
 --CREATE INDEX [Key] ON  [P_Cuota] ([IdCuota], [IdEmpleado], [IdCredito]);
 
+--
+Interfaz de usuario metroframework UI
+instalar paquete metroframework UI con NuGet y los controles
+--
