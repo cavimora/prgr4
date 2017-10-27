@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="creditocobroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="B_Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="18" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="18" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="18" />
+          <Property Name="IdInstitucion" Type="int" />
+        </EntityType>
+        <EntityType Name="B_Credito">
+          <Key>
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCredito" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="varchar" MaxLength="9" />
+          <Property Name="MontoAprobado" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Tasa" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Plazo" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="B_Institucion">
+          <Key>
+            <PropertyRef Name="IdInstitucion" />
+          </Key>
+          <Property Name="IdInstitucion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="B_Proyeccion">
+          <Key>
+            <PropertyRef Name="IdCuota" />
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCuota" Type="int" Nullable="false" />
+          <Property Name="IdCredito" Type="int" Nullable="false" />
+          <Property Name="Principal" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Intereses" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Saldo" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="AlDia" Type="bit" />
+          <Property Name="Amortiza" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="FechaCorte" Type="datetime" />
+        </EntityType>
+        <EntityType Name="P_Cuota">
+          <Key>
+            <PropertyRef Name="IdCuota" />
+            <PropertyRef Name="IdEmpleado" />
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCuota" Type="int" Nullable="false" />
+          <Property Name="IdEmpleado" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="IdCredito" Type="int" Nullable="false" />
+          <Property Name="Principal" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Intereses" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Saldo" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="SePago" Type="bit" />
+          <Property Name="Amortiza" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="FechaCorte" Type="datetime" />
+        </EntityType>
+        <EntityType Name="P_Empleado">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="18" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="18" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="18" />
+        </EntityType>
+        <Association Name="FK__B_Cliente__IdIns__4E88ABD4">
+          <End Role="B_Institucion" Type="Self.B_Institucion" Multiplicity="0..1" />
+          <End Role="B_Cliente" Type="Self.B_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B_Institucion">
+              <PropertyRef Name="IdInstitucion" />
+            </Principal>
+            <Dependent Role="B_Cliente">
+              <PropertyRef Name="IdInstitucion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__B_Credito__IdCli__5165187F">
+          <End Role="B_Cliente" Type="Self.B_Cliente" Multiplicity="0..1" />
+          <End Role="B_Credito" Type="Self.B_Credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B_Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="B_Credito">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__B_Proyecc__IdCre__5441852A">
+          <End Role="B_Credito" Type="Self.B_Credito" Multiplicity="1" />
+          <End Role="B_Proyeccion" Type="Self.B_Proyeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B_Credito">
+              <PropertyRef Name="IdCredito" />
+            </Principal>
+            <Dependent Role="B_Proyeccion">
+              <PropertyRef Name="IdCredito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__P_Cuota__IdEmple__5CD6CB2B">
+          <End Role="P_Empleado" Type="Self.P_Empleado" Multiplicity="1" />
+          <End Role="P_Cuota" Type="Self.P_Cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="P_Empleado">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="P_Cuota">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="creditocobroModelStoreContainer">
+          <EntitySet Name="B_Cliente" EntityType="Self.B_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Credito" EntityType="Self.B_Credito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Institucion" EntityType="Self.B_Institucion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Proyeccion" EntityType="Self.B_Proyeccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P_Cuota" EntityType="Self.P_Cuota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P_Empleado" EntityType="Self.P_Empleado" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__B_Cliente__IdIns__4E88ABD4" Association="Self.FK__B_Cliente__IdIns__4E88ABD4">
+            <End Role="B_Institucion" EntitySet="B_Institucion" />
+            <End Role="B_Cliente" EntitySet="B_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__B_Credito__IdCli__5165187F" Association="Self.FK__B_Credito__IdCli__5165187F">
+            <End Role="B_Cliente" EntitySet="B_Cliente" />
+            <End Role="B_Credito" EntitySet="B_Credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK__B_Proyecc__IdCre__5441852A" Association="Self.FK__B_Proyecc__IdCre__5441852A">
+            <End Role="B_Credito" EntitySet="B_Credito" />
+            <End Role="B_Proyeccion" EntitySet="B_Proyeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__P_Cuota__IdEmple__5CD6CB2B" Association="Self.FK__P_Cuota__IdEmple__5CD6CB2B">
+            <End Role="P_Empleado" EntitySet="P_Empleado" />
+            <End Role="P_Cuota" EntitySet="P_Cuota" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="creditocobroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="B_Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="IdInstitucion" Type="Int32" />
+          <NavigationProperty Name="B_Institucion" Relationship="Self.FK__B_Cliente__IdIns__4E88ABD4" FromRole="B_Cliente" ToRole="B_Institucion" />
+          <NavigationProperty Name="B_Credito" Relationship="Self.FK__B_Credito__IdCli__5165187F" FromRole="B_Cliente" ToRole="B_Credito" />
+        </EntityType>
+        <EntityType Name="B_Credito">
+          <Key>
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCredito" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="MontoAprobado" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Tasa" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Plazo" Type="Decimal" Precision="18" Scale="4" />
+          <NavigationProperty Name="B_Cliente" Relationship="Self.FK__B_Credito__IdCli__5165187F" FromRole="B_Credito" ToRole="B_Cliente" />
+          <NavigationProperty Name="B_Proyeccion" Relationship="Self.FK__B_Proyecc__IdCre__5441852A" FromRole="B_Credito" ToRole="B_Proyeccion" />
+        </EntityType>
+        <EntityType Name="B_Institucion">
+          <Key>
+            <PropertyRef Name="IdInstitucion" />
+          </Key>
+          <Property Name="IdInstitucion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="B_Cliente" Relationship="Self.FK__B_Cliente__IdIns__4E88ABD4" FromRole="B_Institucion" ToRole="B_Cliente" />
+        </EntityType>
+        <EntityType Name="B_Proyeccion">
+          <Key>
+            <PropertyRef Name="IdCuota" />
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCuota" Type="Int32" Nullable="false" />
+          <Property Name="IdCredito" Type="Int32" Nullable="false" />
+          <Property Name="Principal" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Intereses" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Saldo" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="AlDia" Type="Boolean" />
+          <Property Name="Amortiza" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="FechaCorte" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="B_Credito" Relationship="Self.FK__B_Proyecc__IdCre__5441852A" FromRole="B_Proyeccion" ToRole="B_Credito" />
+        </EntityType>
+        <EntityType Name="P_Cuota">
+          <Key>
+            <PropertyRef Name="IdCuota" />
+            <PropertyRef Name="IdEmpleado" />
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCuota" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpleado" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdCredito" Type="Int32" Nullable="false" />
+          <Property Name="Principal" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Intereses" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Saldo" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SePago" Type="Boolean" />
+          <Property Name="Amortiza" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="FechaCorte" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="P_Empleado" Relationship="Self.FK__P_Cuota__IdEmple__5CD6CB2B" FromRole="P_Cuota" ToRole="P_Empleado" />
+        </EntityType>
+        <EntityType Name="P_Empleado">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="P_Cuota" Relationship="Self.FK__P_Cuota__IdEmple__5CD6CB2B" FromRole="P_Empleado" ToRole="P_Cuota" />
+        </EntityType>
+        <Association Name="FK__B_Cliente__IdIns__4E88ABD4">
+          <End Role="B_Institucion" Type="Self.B_Institucion" Multiplicity="0..1" />
+          <End Role="B_Cliente" Type="Self.B_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B_Institucion">
+              <PropertyRef Name="IdInstitucion" />
+            </Principal>
+            <Dependent Role="B_Cliente">
+              <PropertyRef Name="IdInstitucion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__B_Credito__IdCli__5165187F">
+          <End Role="B_Cliente" Type="Self.B_Cliente" Multiplicity="0..1" />
+          <End Role="B_Credito" Type="Self.B_Credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B_Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="B_Credito">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__B_Proyecc__IdCre__5441852A">
+          <End Role="B_Credito" Type="Self.B_Credito" Multiplicity="1" />
+          <End Role="B_Proyeccion" Type="Self.B_Proyeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B_Credito">
+              <PropertyRef Name="IdCredito" />
+            </Principal>
+            <Dependent Role="B_Proyeccion">
+              <PropertyRef Name="IdCredito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__P_Cuota__IdEmple__5CD6CB2B">
+          <End Role="P_Empleado" Type="Self.P_Empleado" Multiplicity="1" />
+          <End Role="P_Cuota" Type="Self.P_Cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="P_Empleado">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="P_Cuota">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="B_Cliente" EntityType="Self.B_Cliente" />
+          <EntitySet Name="B_Credito" EntityType="Self.B_Credito" />
+          <EntitySet Name="B_Institucion" EntityType="Self.B_Institucion" />
+          <EntitySet Name="B_Proyeccion" EntityType="Self.B_Proyeccion" />
+          <EntitySet Name="P_Cuota" EntityType="Self.P_Cuota" />
+          <EntitySet Name="P_Empleado" EntityType="Self.P_Empleado" />
+          <AssociationSet Name="FK__B_Cliente__IdIns__4E88ABD4" Association="Self.FK__B_Cliente__IdIns__4E88ABD4">
+            <End Role="B_Institucion" EntitySet="B_Institucion" />
+            <End Role="B_Cliente" EntitySet="B_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__B_Credito__IdCli__5165187F" Association="Self.FK__B_Credito__IdCli__5165187F">
+            <End Role="B_Cliente" EntitySet="B_Cliente" />
+            <End Role="B_Credito" EntitySet="B_Credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK__B_Proyecc__IdCre__5441852A" Association="Self.FK__B_Proyecc__IdCre__5441852A">
+            <End Role="B_Credito" EntitySet="B_Credito" />
+            <End Role="B_Proyeccion" EntitySet="B_Proyeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__P_Cuota__IdEmple__5CD6CB2B" Association="Self.FK__P_Cuota__IdEmple__5CD6CB2B">
+            <End Role="P_Empleado" EntitySet="P_Empleado" />
+            <End Role="P_Cuota" EntitySet="P_Cuota" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="creditocobroModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="B_Cliente">
+            <EntityTypeMapping TypeName="creditocobroModel.B_Cliente">
+              <MappingFragment StoreEntitySet="B_Cliente">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="IdInstitucion" ColumnName="IdInstitucion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Credito">
+            <EntityTypeMapping TypeName="creditocobroModel.B_Credito">
+              <MappingFragment StoreEntitySet="B_Credito">
+                <ScalarProperty Name="IdCredito" ColumnName="IdCredito" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="MontoAprobado" ColumnName="MontoAprobado" />
+                <ScalarProperty Name="Tasa" ColumnName="Tasa" />
+                <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Institucion">
+            <EntityTypeMapping TypeName="creditocobroModel.B_Institucion">
+              <MappingFragment StoreEntitySet="B_Institucion">
+                <ScalarProperty Name="IdInstitucion" ColumnName="IdInstitucion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Proyeccion">
+            <EntityTypeMapping TypeName="creditocobroModel.B_Proyeccion">
+              <MappingFragment StoreEntitySet="B_Proyeccion">
+                <ScalarProperty Name="IdCuota" ColumnName="IdCuota" />
+                <ScalarProperty Name="IdCredito" ColumnName="IdCredito" />
+                <ScalarProperty Name="Principal" ColumnName="Principal" />
+                <ScalarProperty Name="Intereses" ColumnName="Intereses" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="AlDia" ColumnName="AlDia" />
+                <ScalarProperty Name="Amortiza" ColumnName="Amortiza" />
+                <ScalarProperty Name="FechaCorte" ColumnName="FechaCorte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_Cuota">
+            <EntityTypeMapping TypeName="creditocobroModel.P_Cuota">
+              <MappingFragment StoreEntitySet="P_Cuota">
+                <ScalarProperty Name="IdCuota" ColumnName="IdCuota" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdCredito" ColumnName="IdCredito" />
+                <ScalarProperty Name="Principal" ColumnName="Principal" />
+                <ScalarProperty Name="Intereses" ColumnName="Intereses" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="SePago" ColumnName="SePago" />
+                <ScalarProperty Name="Amortiza" ColumnName="Amortiza" />
+                <ScalarProperty Name="FechaCorte" ColumnName="FechaCorte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_Empleado">
+            <EntityTypeMapping TypeName="creditocobroModel.P_Empleado">
+              <MappingFragment StoreEntitySet="P_Empleado">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
