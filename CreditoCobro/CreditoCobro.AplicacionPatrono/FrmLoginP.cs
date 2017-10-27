@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace CreditoCobro.AplicacionPatrono
 {
-    public partial class Form1 : Form
+    public partial class FrmLoginP : MetroFramework.Forms.MetroForm
     {
-        public Form1()
+        public FrmLoginP()
         {
             InitializeComponent();
+        }
+
+        private void FrmLoginP_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

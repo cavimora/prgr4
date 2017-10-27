@@ -133,7 +133,7 @@
             // 
             this.panel1.BackgroundImage = global::CreditoCobro.AplicacionBanco.Properties.Resources.user2;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel1.Location = new System.Drawing.Point(158, 43);
+            this.panel1.Location = new System.Drawing.Point(158, 45);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(81, 74);
             this.panel1.TabIndex = 5;
