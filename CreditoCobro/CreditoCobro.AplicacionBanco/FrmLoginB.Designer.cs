@@ -1,6 +1,6 @@
 ﻿namespace CreditoCobro.AplicacionBanco
 {
-    partial class FrmLogin
+    partial class FrmLoginB
     {
         /// <summary>
         /// Required designer variable.
