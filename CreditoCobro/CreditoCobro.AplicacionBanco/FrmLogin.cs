@@ -21,5 +21,18 @@ namespace CreditoCobro.AplicacionBanco
         {
 
         }
+
+        private void ChShowPsw_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChShowPsw.Checked == true)
+            {
+                TxtPassword.UseSystemPasswordChar = false;
+                TxtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                TxtPassword.UseSystemPasswordChar = true;
+            }
+        }
     }
 }
