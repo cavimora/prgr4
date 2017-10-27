@@ -22,3 +22,6 @@ Server=tcp:creditocobro.database.windows.net,1433;Initial Catalog=creditocobro;P
 -----------------------------------------------------
 Usuario Admin
 ccadmin - Admin2017!
+-----------------------------------------------------
+URL GitHub:
+https://github.com/cavimora/prgr4.git
