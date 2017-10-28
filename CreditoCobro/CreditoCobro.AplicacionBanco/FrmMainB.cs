@@ -19,7 +19,7 @@ namespace CreditoCobro.AplicacionBanco
 
         private void FrmMainB_Load(object sender, EventArgs e)
         {
-            
+            Clock.Start();
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
@@ -71,6 +71,11 @@ namespace CreditoCobro.AplicacionBanco
         private void BtnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Clock_Tick(object sender, EventArgs e)
+        {
+            lbClock.Text = DateTime.Now.ToLongTimeString().ToString();
         }
     }
 }

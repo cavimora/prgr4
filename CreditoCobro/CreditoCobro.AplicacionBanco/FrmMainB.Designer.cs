@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.plnMenu = new System.Windows.Forms.Panel();
             this.plnTop = new System.Windows.Forms.Panel();
@@ -46,8 +47,12 @@
             this.BtnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.pClock = new System.Windows.Forms.Panel();
+            this.lbClock = new MetroFramework.Controls.MetroLabel();
+            this.Clock = new System.Windows.Forms.Timer(this.components);
             this.plnMenu.SuspendLayout();
             this.plnTop.SuspendLayout();
+            this.pClock.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -276,6 +281,31 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // pClock
+            // 
+            this.pClock.Controls.Add(this.lbClock);
+            this.pClock.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pClock.Location = new System.Drawing.Point(949, 38);
+            this.pClock.Name = "pClock";
+            this.pClock.Size = new System.Drawing.Size(96, 618);
+            this.pClock.TabIndex = 8;
+            // 
+            // lbClock
+            // 
+            this.lbClock.AutoSize = true;
+            this.lbClock.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbClock.Location = new System.Drawing.Point(42, 8);
+            this.lbClock.Name = "lbClock";
+            this.lbClock.Size = new System.Drawing.Size(51, 19);
+            this.lbClock.TabIndex = 12;
+            this.lbClock.Text = "-------";
+            this.lbClock.UseCustomBackColor = true;
+            this.lbClock.UseCustomForeColor = true;
+            // 
+            // Clock
+            // 
+            this.Clock.Tick += new System.EventHandler(this.Clock_Tick);
+            // 
             // FrmMainB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +314,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1048, 659);
+            this.Controls.Add(this.pClock);
             this.Controls.Add(this.plnMenu);
             this.Controls.Add(this.plnTop);
             this.Controls.Add(this.panel8);
@@ -299,6 +330,8 @@
             this.plnMenu.ResumeLayout(false);
             this.plnTop.ResumeLayout(false);
             this.plnTop.PerformLayout();
+            this.pClock.ResumeLayout(false);
+            this.pClock.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -322,5 +355,8 @@
         private System.Windows.Forms.Button BtnArchives;
         private System.Windows.Forms.Button BtnPays;
         private System.Windows.Forms.Button BtnMore;
+        private System.Windows.Forms.Panel pClock;
+        private MetroFramework.Controls.MetroLabel lbClock;
+        private System.Windows.Forms.Timer Clock;
     }
 }
