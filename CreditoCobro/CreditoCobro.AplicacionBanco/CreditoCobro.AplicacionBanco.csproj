@@ -59,10 +59,19 @@
     <Compile Include="FrmLoginB.Designer.cs">
       <DependentUpon>FrmLoginB.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMainB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMainB.Designer.cs">
+      <DependentUpon>FrmMainB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmLoginB.resx">
       <DependentUpon>FrmLoginB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMainB.resx">
+      <DependentUpon>FrmMainB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,6 +105,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross-out1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus-symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus-symbol1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
