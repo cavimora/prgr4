@@ -26,5 +26,51 @@ namespace CreditoCobro.AplicacionBanco
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //55; 618
+            //200; 618
+            if (plnMenu.Height == 618 & plnMenu.Width == 55)
+            {
+                plnMenu.Height = 618;
+                plnMenu.Width = 200;
+                rec1.Visible = true;
+                BtnMore.Location = new Point(162,8);
+                
+            }
+            else
+            {
+                plnMenu.Height = 618;
+                plnMenu.Width = 55;
+                rec1.Visible = false;
+                BtnMore.Location = new Point(10,8);
+            }
+            
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            
+            if(this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                
+            }
+            else if(this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void BtnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
