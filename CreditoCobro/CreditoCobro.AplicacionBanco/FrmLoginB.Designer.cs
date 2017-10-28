@@ -33,8 +33,8 @@
             this.TxtUser = new MetroFramework.Controls.MetroTextBox();
             this.TxtPassword = new MetroFramework.Controls.MetroTextBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.ChShowPsw = new MetroFramework.Controls.MetroCheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -61,7 +61,7 @@
             // 
             // 
             this.TxtUser.CustomButton.Image = null;
-            this.TxtUser.CustomButton.Location = new System.Drawing.Point(150, 1);
+            this.TxtUser.CustomButton.Location = new System.Drawing.Point(199, 1);
             this.TxtUser.CustomButton.Name = "";
             this.TxtUser.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.TxtUser.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -91,7 +91,7 @@
             // 
             // 
             this.TxtPassword.CustomButton.Image = null;
-            this.TxtPassword.CustomButton.Location = new System.Drawing.Point(150, 1);
+            this.TxtPassword.CustomButton.Location = new System.Drawing.Point(199, 1);
             this.TxtPassword.CustomButton.Name = "";
             this.TxtPassword.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.TxtPassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -128,15 +128,7 @@
             this.metroButton1.UseCustomBackColor = true;
             this.metroButton1.UseCustomForeColor = true;
             this.metroButton1.UseSelectable = true;
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::CreditoCobro.AplicacionBanco.Properties.Resources.user2;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel1.Location = new System.Drawing.Point(158, 45);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(81, 74);
-            this.panel1.TabIndex = 5;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // ChShowPsw
             // 
@@ -149,7 +141,16 @@
             this.ChShowPsw.UseSelectable = true;
             this.ChShowPsw.CheckedChanged += new System.EventHandler(this.ChShowPsw_CheckedChanged);
             // 
-            // FrmLogin
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::CreditoCobro.AplicacionBanco.Properties.Resources.user2;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel1.Location = new System.Drawing.Point(158, 45);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(81, 74);
+            this.panel1.TabIndex = 5;
+            // 
+            // FrmLoginB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,7 +162,7 @@
             this.Controls.Add(this.TxtUser);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Name = "FrmLogin";
+            this.Name = "FrmLoginB";
             this.Text = "Central Bank";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);

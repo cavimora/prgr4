@@ -16,7 +16,7 @@ namespace CreditoCobro.AplicacionBanco
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMainB());
+            Application.Run(new FrmLoginB());
         }
     }
 }
