@@ -22,5 +22,9 @@ namespace CreditoCobro.AplicacionBanco
             
         }
 
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

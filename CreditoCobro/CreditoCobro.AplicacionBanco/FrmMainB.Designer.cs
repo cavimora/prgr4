@@ -37,10 +37,15 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.BtnPays = new System.Windows.Forms.Button();
+            this.BtnArchives = new System.Windows.Forms.Button();
+            this.btnProyections = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.BtnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
@@ -55,11 +60,17 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.BtnPays);
+            this.panel4.Controls.Add(this.BtnArchives);
+            this.panel4.Controls.Add(this.panel10);
+            this.panel4.Controls.Add(this.btnProyections);
             this.panel4.Controls.Add(this.panel9);
             this.panel4.Location = new System.Drawing.Point(3, 36);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 455);
+            this.panel4.Size = new System.Drawing.Size(202, 455);
             this.panel4.TabIndex = 4;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // panel5
             // 
@@ -130,11 +141,73 @@
             this.panel8.Size = new System.Drawing.Size(3, 488);
             this.panel8.TabIndex = 7;
             // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.White;
+            this.panel10.Location = new System.Drawing.Point(49, 104);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(146, 1);
+            this.panel10.TabIndex = 8;
+            // 
+            // BtnPays
+            // 
+            this.BtnPays.FlatAppearance.BorderSize = 0;
+            this.BtnPays.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.BtnPays.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.BtnPays.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPays.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPays.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnPays.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.point_of_service;
+            this.BtnPays.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnPays.Location = new System.Drawing.Point(9, 230);
+            this.BtnPays.Name = "BtnPays";
+            this.BtnPays.Size = new System.Drawing.Size(182, 39);
+            this.BtnPays.TabIndex = 12;
+            this.BtnPays.Text = "&Aplicación de Pagos";
+            this.BtnPays.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnPays.UseVisualStyleBackColor = true;
+            // 
+            // BtnArchives
+            // 
+            this.BtnArchives.FlatAppearance.BorderSize = 0;
+            this.BtnArchives.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.BtnArchives.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.BtnArchives.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnArchives.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnArchives.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnArchives.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.file1;
+            this.BtnArchives.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnArchives.Location = new System.Drawing.Point(6, 176);
+            this.BtnArchives.Name = "BtnArchives";
+            this.BtnArchives.Size = new System.Drawing.Size(182, 39);
+            this.BtnArchives.TabIndex = 11;
+            this.BtnArchives.Text = "&Nuevo Archivo  Planilla";
+            this.BtnArchives.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnArchives.UseVisualStyleBackColor = true;
+            // 
+            // btnProyections
+            // 
+            this.btnProyections.FlatAppearance.BorderSize = 0;
+            this.btnProyections.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btnProyections.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnProyections.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProyections.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProyections.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnProyections.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.credit_card2;
+            this.btnProyections.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProyections.Location = new System.Drawing.Point(4, 120);
+            this.btnProyections.Name = "btnProyections";
+            this.btnProyections.Size = new System.Drawing.Size(182, 39);
+            this.btnProyections.TabIndex = 10;
+            this.btnProyections.Text = "&Proyección de Créditos";
+            this.btnProyections.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProyections.UseVisualStyleBackColor = true;
+            // 
             // panel9
             // 
             this.panel9.BackgroundImage = global::CreditoCobro.AplicacionBanco.Properties.Resources.money;
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel9.Location = new System.Drawing.Point(62, 17);
+            this.panel9.Location = new System.Drawing.Point(103, 17);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(68, 71);
             this.panel9.TabIndex = 8;
@@ -178,6 +251,19 @@
             this.btnClose.TabIndex = 8;
             this.btnClose.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.menu1;
+            this.button1.Location = new System.Drawing.Point(173, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(27, 21);
+            this.button1.TabIndex = 13;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmMainB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,5 +302,10 @@
         private System.Windows.Forms.Button btnMaximize;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button btnProyections;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button BtnArchives;
+        private System.Windows.Forms.Button BtnPays;
+        private System.Windows.Forms.Button button1;
     }
 }
