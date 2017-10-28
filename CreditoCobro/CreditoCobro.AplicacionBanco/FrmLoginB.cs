@@ -39,7 +39,7 @@ namespace CreditoCobro.AplicacionBanco
         {
             FrmMainB Form1 = new FrmMainB();
             Form1.Show();
-            
+            this.Hide();
         }
     }
 }
