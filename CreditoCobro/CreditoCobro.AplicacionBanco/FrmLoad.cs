@@ -16,5 +16,17 @@ namespace CreditoCobro.AplicacionBanco
         {
             InitializeComponent();
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            rectangleShape2.Width += 5;
+            if(rectangleShape2.Width>= 401)
+            {
+                timer1.Stop();
+                FrmLoginB Flogin = new FrmLoginB();
+                Flogin.Show();
+                this.Hide();
+            }
+        }
     }
 }
