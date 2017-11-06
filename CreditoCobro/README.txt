@@ -109,3 +109,6 @@ CREATE TABLE [P_Cuota] (
 Interfaz de usuario metroframework UI
 instalar paquete metroframework UI con NuGet y los controles
 --
+Descargar e instalar powerpacks:
+https://docs.microsoft.com/en-us/dotnet/visual-basic/developing-apps/windows-forms/power-packs-controls
+--
