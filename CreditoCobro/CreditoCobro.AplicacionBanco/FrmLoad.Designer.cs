@@ -32,10 +32,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.label3 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.SuspendLayout();
             // 
             // label1
@@ -66,20 +67,12 @@
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape3,
             this.rectangleShape2,
             this.rectangleShape1});
             this.shapeContainer1.Size = new System.Drawing.Size(403, 196);
             this.shapeContainer1.TabIndex = 2;
             this.shapeContainer1.TabStop = false;
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape1.BorderColor = System.Drawing.Color.DarkSlateGray;
-            this.rectangleShape1.Location = new System.Drawing.Point(0, 149);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(401, 10);
             // 
             // rectangleShape2
             // 
@@ -89,6 +82,15 @@
             this.rectangleShape2.Location = new System.Drawing.Point(-1, 149);
             this.rectangleShape2.Name = "rectangleShape2";
             this.rectangleShape2.Size = new System.Drawing.Size(15, 10);
+            // 
+            // rectangleShape1
+            // 
+            this.rectangleShape1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape1.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.rectangleShape1.Location = new System.Drawing.Point(0, 149);
+            this.rectangleShape1.Name = "rectangleShape1";
+            this.rectangleShape1.Size = new System.Drawing.Size(401, 10);
             // 
             // label3
             // 
@@ -107,6 +109,16 @@
             this.timer1.Interval = 25;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // rectangleShape3
+            // 
+            this.rectangleShape3.BackColor = System.Drawing.Color.Cyan;
+            this.rectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape3.BorderColor = System.Drawing.Color.Cyan;
+            this.rectangleShape3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rectangleShape3.Location = new System.Drawing.Point(-2, 149);
+            this.rectangleShape3.Name = "rectangleShape2";
+            this.rectangleShape3.Size = new System.Drawing.Size(15, 10);
+            // 
             // FrmLoad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,6 +133,7 @@
             this.Name = "FrmLoad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLoad";
+            this.Load += new System.EventHandler(this.FrmLoad_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,5 +148,6 @@
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape3;
     }
 }

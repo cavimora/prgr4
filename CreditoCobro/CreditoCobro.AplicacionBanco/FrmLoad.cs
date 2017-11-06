@@ -28,5 +28,10 @@ namespace CreditoCobro.AplicacionBanco
                 this.Hide();
             }
         }
+
+        private void FrmLoad_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
