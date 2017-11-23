@@ -42,6 +42,7 @@
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -55,13 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Credito.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreditoCobro.DataAccess\CreditoCobro.Datos.csproj">
       <Project>{add298c4-1b7f-45f3-896b-ca476194c8cb}</Project>
       <Name>CreditoCobro.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreditoCobro.DTO\CreditoCobro.DTO.csproj">
+      <Project>{a2ba3ce6-b13a-4877-bd9c-c6eaf3705d36}</Project>
+      <Name>CreditoCobro.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
