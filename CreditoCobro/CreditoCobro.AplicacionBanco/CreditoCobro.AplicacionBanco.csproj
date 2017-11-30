@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClients.Designer.cs">
+      <DependentUpon>FrmClients.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLoad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,12 @@
     <Compile Include="FrmMainB.Designer.cs">
       <DependentUpon>FrmMainB.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmOperations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOperations.Designer.cs">
+      <DependentUpon>FrmOperations.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProjections.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +93,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmClients.resx">
+      <DependentUpon>FrmClients.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLoad.resx">
       <DependentUpon>FrmLoad.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainB.resx">
       <DependentUpon>FrmMainB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOperations.resx">
+      <DependentUpon>FrmOperations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProjections.resx">
       <DependentUpon>FrmProjections.cs</DependentUpon>
@@ -171,6 +189,12 @@
       <Project>{51e0e67d-ad0f-4ed3-9c01-ddb2dd7f192f}</Project>
       <Name>CreditoCobro.NegocioBanco</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer-service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\curriculum.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
