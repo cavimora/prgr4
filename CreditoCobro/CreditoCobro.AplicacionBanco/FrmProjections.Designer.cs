@@ -162,9 +162,9 @@
             // 
             // btnNewProjection
             // 
-            this.btnNewProjection.Location = new System.Drawing.Point(92, 252);
+            this.btnNewProjection.Location = new System.Drawing.Point(92, 243);
             this.btnNewProjection.Name = "btnNewProjection";
-            this.btnNewProjection.Size = new System.Drawing.Size(113, 23);
+            this.btnNewProjection.Size = new System.Drawing.Size(119, 37);
             this.btnNewProjection.TabIndex = 17;
             this.btnNewProjection.Text = "Generar Proyección";
             this.btnNewProjection.UseSelectable = true;
