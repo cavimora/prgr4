@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="creditocobroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="creditocobroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="B_Cliente">
           <Key>
             <PropertyRef Name="IdCliente" />
@@ -45,6 +45,13 @@
           <Property Name="AlDia" Type="bit" />
           <Property Name="Amortiza" Type="decimal" Precision="18" Scale="4" />
           <Property Name="FechaCorte" Type="datetime" />
+        </EntityType>
+        <EntityType Name="G_Usuarios">
+          <Key>
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="usuario" Type="nchar" MaxLength="28" Nullable="false" />
+          <Property Name="contrasena" Type="nchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="P_Cuota">
           <Key>
@@ -124,6 +131,7 @@
           <EntitySet Name="B_Credito" EntityType="Self.B_Credito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="B_Institucion" EntityType="Self.B_Institucion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="B_Proyeccion" EntityType="Self.B_Proyeccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="G_Usuarios" EntityType="Self.G_Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="P_Cuota" EntityType="Self.P_Cuota" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="P_Empleado" EntityType="Self.P_Empleado" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__B_Cliente__IdIns__4E88ABD4" Association="Self.FK__B_Cliente__IdIns__4E88ABD4">
@@ -143,8 +151,7 @@
             <End Role="P_Cuota" EntitySet="P_Cuota" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="creditocobroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -293,7 +300,15 @@
             <End Role="P_Empleado" EntitySet="P_Empleado" />
             <End Role="P_Cuota" EntitySet="P_Cuota" />
           </AssociationSet>
+          <EntitySet Name="G_Usuarios" EntityType="creditocobroModel.G_Usuarios" />
         </EntityContainer>
+        <EntityType Name="G_Usuarios">
+          <Key>
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="28" FixedLength="true" Unicode="true" />
+          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="128" FixedLength="true" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -366,6 +381,14 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
                 <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="G_Usuarios">
+            <EntityTypeMapping TypeName="creditocobroModel.G_Usuarios">
+              <MappingFragment StoreEntitySet="G_Usuarios">
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -153,5 +153,15 @@
   <ItemGroup>
     <None Include="Resources\menu2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreditoCobro.DTO\CreditoCobro.DTO.csproj">
+      <Project>{A2BA3CE6-B13A-4877-BD9C-C6EAF3705D36}</Project>
+      <Name>CreditoCobro.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreditoCobro.NegocioBanco\CreditoCobro.NegocioBanco.csproj">
+      <Project>{51e0e67d-ad0f-4ed3-9c01-ddb2dd7f192f}</Project>
+      <Name>CreditoCobro.NegocioBanco</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

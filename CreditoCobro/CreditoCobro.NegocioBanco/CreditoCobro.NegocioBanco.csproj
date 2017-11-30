@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clientes.cs" />
     <Compile Include="Credito.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

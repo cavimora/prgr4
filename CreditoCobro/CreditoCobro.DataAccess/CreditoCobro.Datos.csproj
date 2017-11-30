@@ -83,6 +83,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CreditoCobroContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="G_Usuarios.cs">
+      <DependentUpon>CreditoCobroContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="P_Cuota.cs">
       <DependentUpon>CreditoCobroContext.tt</DependentUpon>

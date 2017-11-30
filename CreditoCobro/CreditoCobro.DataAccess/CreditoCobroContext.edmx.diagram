@@ -15,6 +15,7 @@
         <AssociationConnector Association="creditocobroModel.FK__B_Credito__IdCli__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="creditocobroModel.FK__B_Proyecc__IdCre__5441852A" ManuallyRouted="false" />
         <AssociationConnector Association="creditocobroModel.FK__P_Cuota__IdEmple__5CD6CB2B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="creditocobroModel.G_Usuarios" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
