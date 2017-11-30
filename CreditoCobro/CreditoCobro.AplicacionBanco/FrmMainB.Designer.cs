@@ -50,24 +50,9 @@
             this.pClock = new System.Windows.Forms.Panel();
             this.lbClock = new MetroFramework.Controls.MetroLabel();
             this.Clock = new System.Windows.Forms.Timer(this.components);
-            this.dtgClientes = new System.Windows.Forms.DataGridView();
-            this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdInstitucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgCreditos = new System.Windows.Forms.DataGridView();
-            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tasa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Plazo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnGenerar = new System.Windows.Forms.Button();
-            this.dtgProyeccion = new System.Windows.Forms.DataGridView();
             this.plnMenu.SuspendLayout();
             this.plnTop.SuspendLayout();
             this.pClock.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgCreditos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgProyeccion)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -91,7 +76,6 @@
             this.plnMenu.Name = "plnMenu";
             this.plnMenu.Size = new System.Drawing.Size(55, 618);
             this.plnMenu.TabIndex = 4;
-            this.plnMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // BtnMore
             // 
@@ -170,6 +154,7 @@
             this.btnProyections.Text = "&Proyección de Créditos";
             this.btnProyections.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnProyections.UseVisualStyleBackColor = true;
+            this.btnProyections.Click += new System.EventHandler(this.btnProyections_Click);
             // 
             // panel9
             // 
@@ -321,118 +306,6 @@
             // 
             this.Clock.Tick += new System.EventHandler(this.Clock_Tick);
             // 
-            // dtgClientes
-            // 
-            this.dtgClientes.AllowUserToResizeColumns = false;
-            this.dtgClientes.AllowUserToResizeRows = false;
-            this.dtgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdCliente,
-            this.Nombre,
-            this.Apellido,
-            this.Apellido2,
-            this.IdInstitucion});
-            this.dtgClientes.Location = new System.Drawing.Point(77, 49);
-            this.dtgClientes.MultiSelect = false;
-            this.dtgClientes.Name = "dtgClientes";
-            this.dtgClientes.ReadOnly = true;
-            this.dtgClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgClientes.Size = new System.Drawing.Size(443, 139);
-            this.dtgClientes.TabIndex = 9;
-            this.dtgClientes.Click += new System.EventHandler(this.dtgClientes_CellContentClick);
-            // 
-            // IdCliente
-            // 
-            this.IdCliente.DataPropertyName = "IdCliente";
-            this.IdCliente.HeaderText = "Id";
-            this.IdCliente.Name = "IdCliente";
-            this.IdCliente.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.DataPropertyName = "Apellido1";
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // Apellido2
-            // 
-            this.Apellido2.DataPropertyName = "Apellido2";
-            this.Apellido2.HeaderText = "Apellido 2";
-            this.Apellido2.Name = "Apellido2";
-            this.Apellido2.ReadOnly = true;
-            // 
-            // IdInstitucion
-            // 
-            this.IdInstitucion.DataPropertyName = "IdInstitucion";
-            this.IdInstitucion.HeaderText = "IdInstitucion";
-            this.IdInstitucion.Name = "IdInstitucion";
-            this.IdInstitucion.ReadOnly = true;
-            this.IdInstitucion.Visible = false;
-            // 
-            // dtgCreditos
-            // 
-            this.dtgCreditos.AllowUserToResizeColumns = false;
-            this.dtgCreditos.AllowUserToResizeRows = false;
-            this.dtgCreditos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgCreditos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Monto,
-            this.Tasa,
-            this.Plazo});
-            this.dtgCreditos.Location = new System.Drawing.Point(526, 49);
-            this.dtgCreditos.MultiSelect = false;
-            this.dtgCreditos.Name = "dtgCreditos";
-            this.dtgCreditos.ReadOnly = true;
-            this.dtgCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgCreditos.Size = new System.Drawing.Size(343, 139);
-            this.dtgCreditos.TabIndex = 10;
-            // 
-            // Monto
-            // 
-            this.Monto.DataPropertyName = "Monto";
-            this.Monto.HeaderText = "Monto";
-            this.Monto.Name = "Monto";
-            this.Monto.ReadOnly = true;
-            // 
-            // Tasa
-            // 
-            this.Tasa.DataPropertyName = "Tasa";
-            this.Tasa.HeaderText = "Tasa";
-            this.Tasa.Name = "Tasa";
-            this.Tasa.ReadOnly = true;
-            // 
-            // Plazo
-            // 
-            this.Plazo.DataPropertyName = "Plazo";
-            this.Plazo.HeaderText = "Plazo";
-            this.Plazo.Name = "Plazo";
-            this.Plazo.ReadOnly = true;
-            // 
-            // btnGenerar
-            // 
-            this.btnGenerar.Location = new System.Drawing.Point(526, 205);
-            this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(343, 23);
-            this.btnGenerar.TabIndex = 11;
-            this.btnGenerar.Text = "Generar Proyeccion";
-            this.btnGenerar.UseVisualStyleBackColor = true;
-            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
-            // 
-            // dtgProyeccion
-            // 
-            this.dtgProyeccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgProyeccion.Location = new System.Drawing.Point(77, 235);
-            this.dtgProyeccion.Name = "dtgProyeccion";
-            this.dtgProyeccion.Size = new System.Drawing.Size(792, 412);
-            this.dtgProyeccion.TabIndex = 12;
-            // 
             // FrmMainB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,10 +314,6 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1048, 659);
-            this.Controls.Add(this.dtgProyeccion);
-            this.Controls.Add(this.btnGenerar);
-            this.Controls.Add(this.dtgCreditos);
-            this.Controls.Add(this.dtgClientes);
             this.Controls.Add(this.pClock);
             this.Controls.Add(this.plnMenu);
             this.Controls.Add(this.plnTop);
@@ -463,9 +332,6 @@
             this.plnTop.PerformLayout();
             this.pClock.ResumeLayout(false);
             this.pClock.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgCreditos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgProyeccion)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -492,17 +358,5 @@
         private System.Windows.Forms.Panel pClock;
         private MetroFramework.Controls.MetroLabel lbClock;
         private System.Windows.Forms.Timer Clock;
-        private System.Windows.Forms.DataGridView dtgClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdInstitucion;
-        private System.Windows.Forms.DataGridView dtgCreditos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tasa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Plazo;
-        private System.Windows.Forms.Button btnGenerar;
-        private System.Windows.Forms.DataGridView dtgProyeccion;
     }
 }
