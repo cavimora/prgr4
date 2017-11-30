@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProjections));
             this.dtvProyeccion = new System.Windows.Forms.DataGridView();
             this.dtvCreditos = new System.Windows.Forms.DataGridView();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -180,6 +181,7 @@
             this.Controls.Add(this.dtvProyeccion);
             this.Controls.Add(this.dtvCreditos);
             this.Controls.Add(this.dtvClientes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmProjections";
             this.Text = "Proyecciónes";
             this.Load += new System.EventHandler(this.FrmProjections_Load);

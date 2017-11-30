@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainB));
             this.panel2 = new System.Windows.Forms.Panel();
             this.plnMenu = new System.Windows.Forms.Panel();
             this.rec1 = new System.Windows.Forms.Panel();
@@ -42,8 +43,8 @@
             this.pClock = new System.Windows.Forms.Panel();
             this.lbClock = new MetroFramework.Controls.MetroLabel();
             this.Clock = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNewOper = new System.Windows.Forms.Button();
+            this.btnNewClient = new System.Windows.Forms.Button();
             this.BtnMore = new System.Windows.Forms.Button();
             this.BtnPays = new System.Windows.Forms.Button();
             this.BtnArchives = new System.Windows.Forms.Button();
@@ -67,8 +68,8 @@
             // plnMenu
             // 
             this.plnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.plnMenu.Controls.Add(this.button2);
-            this.plnMenu.Controls.Add(this.button1);
+            this.plnMenu.Controls.Add(this.btnNewOper);
+            this.plnMenu.Controls.Add(this.btnNewClient);
             this.plnMenu.Controls.Add(this.BtnMore);
             this.plnMenu.Controls.Add(this.BtnPays);
             this.plnMenu.Controls.Add(this.BtnArchives);
@@ -186,41 +187,41 @@
             // 
             this.Clock.Tick += new System.EventHandler(this.Clock_Tick);
             // 
-            // button2
+            // btnNewOper
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.curriculum;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 401);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(182, 39);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "&Nueva Operación";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnNewOper.FlatAppearance.BorderSize = 0;
+            this.btnNewOper.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btnNewOper.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnNewOper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewOper.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewOper.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnNewOper.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.curriculum;
+            this.btnNewOper.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNewOper.Location = new System.Drawing.Point(12, 401);
+            this.btnNewOper.Name = "btnNewOper";
+            this.btnNewOper.Size = new System.Drawing.Size(182, 39);
+            this.btnNewOper.TabIndex = 15;
+            this.btnNewOper.Text = "&Nueva Operación";
+            this.btnNewOper.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNewOper.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnNewClient
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.customer_service;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(10, 340);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(182, 39);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "&Nuevo Cliente";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnNewClient.FlatAppearance.BorderSize = 0;
+            this.btnNewClient.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btnNewClient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnNewClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewClient.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewClient.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnNewClient.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.customer_service;
+            this.btnNewClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNewClient.Location = new System.Drawing.Point(10, 340);
+            this.btnNewClient.Name = "btnNewClient";
+            this.btnNewClient.Size = new System.Drawing.Size(182, 39);
+            this.btnNewClient.TabIndex = 14;
+            this.btnNewClient.Text = "&Nuevo Cliente";
+            this.btnNewClient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNewClient.UseVisualStyleBackColor = true;
             // 
             // BtnMore
             // 
@@ -363,6 +364,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMainB";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TransparencyKey = System.Drawing.Color.Silver;
@@ -398,7 +400,7 @@
         private System.Windows.Forms.Panel pClock;
         private MetroFramework.Controls.MetroLabel lbClock;
         private System.Windows.Forms.Timer Clock;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnNewClient;
+        private System.Windows.Forms.Button btnNewOper;
     }
 }

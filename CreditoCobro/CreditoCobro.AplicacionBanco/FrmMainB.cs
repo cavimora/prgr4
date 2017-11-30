@@ -32,6 +32,8 @@ namespace CreditoCobro.AplicacionBanco
                 btnProyections.Enabled = true;
                 BtnArchives.Enabled = true;
                 BtnPays.Enabled = true;
+                btnNewClient.Enabled = true;
+                btnNewOper.Enabled = true;
             }
             else
             {
@@ -42,6 +44,8 @@ namespace CreditoCobro.AplicacionBanco
                 btnProyections.Enabled = false;
                 BtnArchives.Enabled = false;
                 BtnPays.Enabled = false;
+                btnNewClient.Enabled = false;
+                btnNewOper.Enabled = false;
             }
             
         }
