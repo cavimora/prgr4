@@ -43,12 +43,19 @@ namespace CreditoCobro.AplicacionBanco
             dtvClientes.DataSource = _clientes;
         }
 
+        private void CerrarOperaciones(object sender, CancelEventArgs e)
+        {
+            operations = null;
+        }
+
         FrmOperations operations;
         private void btnNewOper_Click(object sender, EventArgs e)
         {
             if (operations == null)
             {
-                operations = new FrmOperations();
+                var index = dtvClientes.CurrentCell.RowIndex;
+                operations = new FrmOperations(_clientes.ElementAt(index));
+                operations.FormClosing += CerrarOperaciones;
                 operations.Show();
             }
             else

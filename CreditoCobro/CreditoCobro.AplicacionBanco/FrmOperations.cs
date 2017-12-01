@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CreditoCobro.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,15 @@ namespace CreditoCobro.AplicacionBanco
         public FrmOperations()
         {
             InitializeComponent();
+        }
+
+        private DtoCliente _cliente;
+
+        public FrmOperations(DtoCliente cliente)
+        {
+            InitializeComponent();
+
+            _cliente = cliente;
         }
 
         private void FrmOperations_Load(object sender, EventArgs e)
