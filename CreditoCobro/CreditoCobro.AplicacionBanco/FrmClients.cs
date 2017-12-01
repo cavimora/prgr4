@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CreditoCobro.DTO;
+using CreditoCobro.NegocioBanco;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,10 @@ namespace CreditoCobro.AplicacionBanco
 {
     public partial class FrmClients : MetroFramework.Forms.MetroForm
     {
+        private Clientes _nclientes;
+        private Credito _ncredito;
+        private List<DtoCliente> _clientes;
+
         public FrmClients()
         {
             InitializeComponent();
@@ -19,7 +25,14 @@ namespace CreditoCobro.AplicacionBanco
 
         private void FrmClients_Load(object sender, EventArgs e)
         {
+            _clientes = _nclientes.GetClientes();
+            CargarClientes();
+        }
 
+        private void CargarClientes()
+        {
+            dtvClientes.DataSource = null;
+            dtvClientes.DataSource = _clientes;
         }
 
         FrmOperations operations;

@@ -30,10 +30,10 @@ namespace CreditoCobro.AplicacionBanco
                 rec1.Visible = true;
                 BtnMore.Location = new Point(162,8);
                 btnProyections.Enabled = true;
-                BtnArchives.Enabled = true;
+                //BtnArchives.Enabled = true;
                 BtnPays.Enabled = true;
                 btnNewClient.Enabled = true;
-                btnNewOper.Enabled = true;
+                //btnNewOper.Enabled = true;
             }
             else
             {
@@ -42,10 +42,10 @@ namespace CreditoCobro.AplicacionBanco
                 rec1.Visible = false;
                 BtnMore.Location = new Point(10,8);
                 btnProyections.Enabled = false;
-                BtnArchives.Enabled = false;
+                //BtnArchives.Enabled = false;
                 BtnPays.Enabled = false;
                 btnNewClient.Enabled = false;
-                btnNewOper.Enabled = false;
+                //btnNewOper.Enabled = false;
             }
             
         }
@@ -96,8 +96,22 @@ namespace CreditoCobro.AplicacionBanco
         {
             Clock.Start();
             btnProyections.Enabled = false;
-            BtnArchives.Enabled = false;
+            //BtnArchives.Enabled = false;
             BtnPays.Enabled = false;
+        }
+
+        FrmClients clientes;
+        private void btnNewClient_Click(object sender, EventArgs e)
+        {
+            if (clientes == null)
+            {
+                clientes = new FrmClients();
+                clientes.Show();
+            }
+            else
+            {
+                clientes.Focus();
+            }
         }
     }
 }

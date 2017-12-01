@@ -95,6 +95,7 @@
             this.btnNewClient.Text = "&Clientes";
             this.btnNewClient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNewClient.UseVisualStyleBackColor = true;
+            this.btnNewClient.Click += new System.EventHandler(this.btnNewClient_Click);
             // 
             // BtnMore
             // 
