@@ -21,6 +21,7 @@ namespace CreditoCobro.AplicacionBanco
         public FrmClients()
         {
             InitializeComponent();
+            _nclientes = new Clientes();
         }
 
         private void FrmClients_Load(object sender, EventArgs e)

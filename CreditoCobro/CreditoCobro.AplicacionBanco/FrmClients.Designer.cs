@@ -317,6 +317,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(495, 548);
             this.Controls.Add(this.btnNewOper);
             this.Controls.Add(this.txtApellido2);
@@ -332,7 +333,9 @@
             this.Controls.Add(this.btnNewProjection);
             this.Controls.Add(this.dtvClientes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmClients";
+            this.Resizable = false;
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.FrmClients_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtvClientes)).EndInit();
