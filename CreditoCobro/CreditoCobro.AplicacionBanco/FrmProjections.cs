@@ -41,13 +41,7 @@ namespace CreditoCobro.AplicacionBanco
             dtvProyeccion.DataSource = null;
             dtvProyeccion.DataSource = _ncredito.GetProyeccion();
         }
-        
-        
-
-        private void btnExportar_Click(object sender, EventArgs e)
-        {
-            ///Codigo Para Exportar Los Datos de un Cliente
-        }
+             
         DtoCliente _cDetallado;
         private void dtvClientes_Click(object sender, EventArgs e)
         {
@@ -56,6 +50,11 @@ namespace CreditoCobro.AplicacionBanco
             dtvProyeccion.DataSource = null;
             dtvCreditos.DataSource = null;
             dtvCreditos.DataSource = _cDetallado.Creditos;
+        }
+
+        private void BtnArchives_Click(object sender, EventArgs e)
+        {
+            ///Codigo Para Exportar Los Datos de un Cliente
         }
     }
 }

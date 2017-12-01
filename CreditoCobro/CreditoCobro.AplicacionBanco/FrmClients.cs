@@ -21,5 +21,19 @@ namespace CreditoCobro.AplicacionBanco
         {
 
         }
+
+        FrmOperations operations;
+        private void btnNewOper_Click(object sender, EventArgs e)
+        {
+            if(operations == null)
+            {
+                operations = new FrmOperations();
+                operations.Show();
+            }
+            else
+            {
+                operations.Focus();
+            }
+        }
     }
 }

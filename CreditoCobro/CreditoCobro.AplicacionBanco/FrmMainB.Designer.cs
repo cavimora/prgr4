@@ -35,7 +35,6 @@
             this.btnNewClient = new System.Windows.Forms.Button();
             this.BtnMore = new System.Windows.Forms.Button();
             this.BtnPays = new System.Windows.Forms.Button();
-            this.BtnArchives = new System.Windows.Forms.Button();
             this.rec1 = new System.Windows.Forms.Panel();
             this.btnProyections = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -70,7 +69,6 @@
             this.plnMenu.Controls.Add(this.btnNewClient);
             this.plnMenu.Controls.Add(this.BtnMore);
             this.plnMenu.Controls.Add(this.BtnPays);
-            this.plnMenu.Controls.Add(this.BtnArchives);
             this.plnMenu.Controls.Add(this.rec1);
             this.plnMenu.Controls.Add(this.btnProyections);
             this.plnMenu.Controls.Add(this.panel9);
@@ -90,7 +88,7 @@
             this.btnNewClient.ForeColor = System.Drawing.SystemColors.Control;
             this.btnNewClient.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.customer_service;
             this.btnNewClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewClient.Location = new System.Drawing.Point(10, 340);
+            this.btnNewClient.Location = new System.Drawing.Point(10, 223);
             this.btnNewClient.Name = "btnNewClient";
             this.btnNewClient.Size = new System.Drawing.Size(182, 39);
             this.btnNewClient.TabIndex = 14;
@@ -123,31 +121,13 @@
             this.BtnPays.ForeColor = System.Drawing.SystemColors.Control;
             this.BtnPays.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.point_of_service;
             this.BtnPays.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnPays.Location = new System.Drawing.Point(9, 275);
+            this.BtnPays.Location = new System.Drawing.Point(7, 178);
             this.BtnPays.Name = "BtnPays";
             this.BtnPays.Size = new System.Drawing.Size(182, 39);
             this.BtnPays.TabIndex = 12;
             this.BtnPays.Text = "&Aplicación de Pagos";
             this.BtnPays.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnPays.UseVisualStyleBackColor = true;
-            // 
-            // BtnArchives
-            // 
-            this.BtnArchives.FlatAppearance.BorderSize = 0;
-            this.BtnArchives.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.BtnArchives.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.BtnArchives.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnArchives.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnArchives.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnArchives.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.file1;
-            this.BtnArchives.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnArchives.Location = new System.Drawing.Point(6, 198);
-            this.BtnArchives.Name = "BtnArchives";
-            this.BtnArchives.Size = new System.Drawing.Size(182, 39);
-            this.BtnArchives.TabIndex = 11;
-            this.BtnArchives.Text = "&Nuevo Archivo  Planilla";
-            this.BtnArchives.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnArchives.UseVisualStyleBackColor = true;
             // 
             // rec1
             // 
@@ -374,7 +354,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnProyections;
         private System.Windows.Forms.Panel rec1;
-        private System.Windows.Forms.Button BtnArchives;
         private System.Windows.Forms.Button BtnPays;
         private System.Windows.Forms.Button BtnMore;
         private System.Windows.Forms.Panel pClock;

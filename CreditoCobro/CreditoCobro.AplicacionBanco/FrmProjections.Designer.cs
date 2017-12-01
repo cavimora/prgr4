@@ -42,7 +42,7 @@
             this.IdInstitucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbPeople = new MetroFramework.Controls.MetroLabel();
             this.btnNewProjection = new MetroFramework.Controls.MetroButton();
-            this.btnExportar = new MetroFramework.Controls.MetroButton();
+            this.BtnArchives = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtvProyeccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvClientes)).BeginInit();
@@ -164,7 +164,7 @@
             // 
             // btnNewProjection
             // 
-            this.btnNewProjection.Location = new System.Drawing.Point(92, 243);
+            this.btnNewProjection.Location = new System.Drawing.Point(541, 243);
             this.btnNewProjection.Name = "btnNewProjection";
             this.btnNewProjection.Size = new System.Drawing.Size(119, 37);
             this.btnNewProjection.TabIndex = 17;
@@ -172,22 +172,32 @@
             this.btnNewProjection.UseSelectable = true;
             this.btnNewProjection.Click += new System.EventHandler(this.btnNewProjection_Click);
             // 
-            // btnExportar
+            // BtnArchives
             // 
-            this.btnExportar.Location = new System.Drawing.Point(217, 243);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(119, 37);
-            this.btnExportar.TabIndex = 18;
-            this.btnExportar.Text = "Exportar Datos";
-            this.btnExportar.UseSelectable = true;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            this.BtnArchives.BackColor = System.Drawing.Color.DarkGray;
+            this.BtnArchives.FlatAppearance.BorderSize = 0;
+            this.BtnArchives.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.BtnArchives.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.BtnArchives.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnArchives.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnArchives.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnArchives.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.file1;
+            this.BtnArchives.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnArchives.Location = new System.Drawing.Point(92, 241);
+            this.BtnArchives.Name = "BtnArchives";
+            this.BtnArchives.Size = new System.Drawing.Size(158, 39);
+            this.BtnArchives.TabIndex = 19;
+            this.BtnArchives.Text = "&Exportar Datos";
+            this.BtnArchives.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnArchives.UseVisualStyleBackColor = false;
+            this.BtnArchives.Click += new System.EventHandler(this.BtnArchives_Click);
             // 
             // FrmProjections
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 714);
-            this.Controls.Add(this.btnExportar);
+            this.Controls.Add(this.BtnArchives);
             this.Controls.Add(this.btnNewProjection);
             this.Controls.Add(this.lbPeople);
             this.Controls.Add(this.dtvProyeccion);
@@ -220,6 +230,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdInstitucion;
         private MetroFramework.Controls.MetroLabel lbPeople;
         private MetroFramework.Controls.MetroButton btnNewProjection;
-        private MetroFramework.Controls.MetroButton btnExportar;
+        private System.Windows.Forms.Button BtnArchives;
     }
 }

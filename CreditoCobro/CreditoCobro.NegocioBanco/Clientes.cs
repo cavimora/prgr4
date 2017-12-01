@@ -84,5 +84,78 @@ namespace CreditoCobro.NegocioBanco
                 throw ex;
             }
         }
+
+        public bool AddCliente(DtoCliente cliente)
+        {
+            try
+            {
+                using (_db = new Entities())
+                {
+                    var exists = _db.B_Cliente.Where(c => c.IdCliente.Trim().Equals(cliente.IdCliente.Trim())).FirstOrDefault();
+                    if (exists != null) throw new Exception("El Id: " + cliente.IdCliente.ToString() + " ya esta asociado a otro cliente");
+                    var institucion = _db.B_Institucion.FirstOrDefault();
+                    B_Cliente nuevoCliente = new B_Cliente()
+                    {
+                        Nombre = cliente.Nombre,
+                        Apellido1 = cliente.Apellido1,
+                        Apellido2 = cliente.Apellido2,
+                        IdCliente = cliente.IdCliente,
+                        IdInstitucion = institucion.IdInstitucion
+                    };
+                    _db.B_Cliente.Add(nuevoCliente);
+                    if (_db.SaveChanges() <= 0) throw new Exception("Hubo un problema a la hora de ingresar el cliente, por favor intente de nuevo.");
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool EditCliente(DtoCliente cliente)
+        {
+            try
+            {
+                using (_db = new Entities())
+                {
+                    var dbCliente = _db.B_Cliente.Where(c => c.IdCliente.Trim().Equals(cliente.IdCliente.Trim())).FirstOrDefault();
+                    if (dbCliente != null)
+                    {
+                        dbCliente.Nombre = cliente.Nombre;
+                        dbCliente.Apellido1 = cliente.Apellido1;
+                        dbCliente.Apellido2 = cliente.Apellido2;
+                        dbCliente.IdCliente = cliente.IdCliente;
+                        if (_db.SaveChanges() <= 0) throw new Exception("Hubo un problema a la hora de modificar el cliente, por favor intente de nuevo.");
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool DeleteCliente(DtoCliente cliente)
+        {
+            try
+            {
+                using (_db = new Entities())
+                {
+                    var dbCliente = _db.B_Cliente.Where(c => c.IdCliente.Trim().Equals(cliente.IdCliente.Trim())).FirstOrDefault();
+                    if (dbCliente != null)
+                    {
+                        _db.B_Cliente.Remove(dbCliente);
+                        if (_db.SaveChanges() <= 0) throw new Exception("Hubo un problema a la hora de eliminar el cliente, por favor intente de nuevo.");
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

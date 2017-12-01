@@ -311,6 +311,7 @@
             this.btnNewOper.Text = "&Operaciones";
             this.btnNewOper.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNewOper.UseVisualStyleBackColor = false;
+            this.btnNewOper.Click += new System.EventHandler(this.btnNewOper_Click);
             // 
             // FrmClients
             // 
