@@ -42,6 +42,7 @@
             this.IdInstitucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbPeople = new MetroFramework.Controls.MetroLabel();
             this.btnNewProjection = new MetroFramework.Controls.MetroButton();
+            this.btnExportar = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtvProyeccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvClientes)).BeginInit();
@@ -114,7 +115,7 @@
             this.dtvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvClientes.Size = new System.Drawing.Size(443, 139);
             this.dtvClientes.TabIndex = 13;
-            this.dtvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvClientes_CellContentClick);
+            this.dtvClientes.Click += new System.EventHandler(this.dtvClientes_Click);
             // 
             // IdCliente
             // 
@@ -171,11 +172,22 @@
             this.btnNewProjection.UseSelectable = true;
             this.btnNewProjection.Click += new System.EventHandler(this.btnNewProjection_Click);
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(217, 243);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(119, 37);
+            this.btnExportar.TabIndex = 18;
+            this.btnExportar.Text = "Exportar Datos";
+            this.btnExportar.UseSelectable = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // FrmProjections
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 714);
+            this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnNewProjection);
             this.Controls.Add(this.lbPeople);
             this.Controls.Add(this.dtvProyeccion);
@@ -208,5 +220,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdInstitucion;
         private MetroFramework.Controls.MetroLabel lbPeople;
         private MetroFramework.Controls.MetroButton btnNewProjection;
+        private MetroFramework.Controls.MetroButton btnExportar;
     }
 }

@@ -78,11 +78,18 @@ namespace CreditoCobro.AplicacionBanco
         {
             lbClock.Text = DateTime.Now.ToLongTimeString().ToString();
         }
-
+        FrmProjections projections;
         private void btnProyections_Click(object sender, EventArgs e)
         {
-            FrmProjections projections = new FrmProjections();
-            projections.Show();
+            if(projections == null)
+            {
+                projections = new FrmProjections();
+                projections.Show();
+            }
+            else
+            {
+                projections.Focus();
+            }
         }
 
         private void FrmMainB_Load(object sender, EventArgs e)
