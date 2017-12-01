@@ -35,9 +35,9 @@
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdInstitucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnNewProjection = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.btnNuevo = new MetroFramework.Controls.MetroButton();
+            this.btnEditar = new MetroFramework.Controls.MetroButton();
+            this.btnEliminar = new MetroFramework.Controls.MetroButton();
             this.lblCedula = new MetroFramework.Controls.MetroLabel();
             this.lblNombre = new MetroFramework.Controls.MetroLabel();
             this.lblApellido1 = new MetroFramework.Controls.MetroLabel();
@@ -69,6 +69,7 @@
             this.dtvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvClientes.Size = new System.Drawing.Size(443, 227);
             this.dtvClientes.TabIndex = 14;
+            this.dtvClientes.Click += new System.EventHandler(this.dtvClientes_Click);
             // 
             // IdCliente
             // 
@@ -106,32 +107,35 @@
             this.IdInstitucion.ReadOnly = true;
             this.IdInstitucion.Visible = false;
             // 
-            // btnNewProjection
+            // btnNuevo
             // 
-            this.btnNewProjection.Location = new System.Drawing.Point(23, 211);
-            this.btnNewProjection.Name = "btnNewProjection";
-            this.btnNewProjection.Size = new System.Drawing.Size(119, 37);
-            this.btnNewProjection.TabIndex = 18;
-            this.btnNewProjection.Text = "Nuevo";
-            this.btnNewProjection.UseSelectable = true;
+            this.btnNuevo.Location = new System.Drawing.Point(23, 211);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(119, 37);
+            this.btnNuevo.TabIndex = 18;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseSelectable = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNewProjection_Click);
             // 
-            // metroButton1
+            // btnEditar
             // 
-            this.metroButton1.Location = new System.Drawing.Point(183, 211);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(119, 37);
-            this.metroButton1.TabIndex = 19;
-            this.metroButton1.Text = "Editar";
-            this.metroButton1.UseSelectable = true;
+            this.btnEditar.Location = new System.Drawing.Point(183, 211);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(119, 37);
+            this.btnEditar.TabIndex = 19;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseSelectable = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // metroButton2
+            // btnEliminar
             // 
-            this.metroButton2.Location = new System.Drawing.Point(347, 211);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(119, 37);
-            this.metroButton2.TabIndex = 20;
-            this.metroButton2.Text = "Eliminar";
-            this.metroButton2.UseSelectable = true;
+            this.btnEliminar.Location = new System.Drawing.Point(347, 211);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(119, 37);
+            this.btnEliminar.TabIndex = 20;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseSelectable = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblCedula
             // 
@@ -328,15 +332,16 @@
             this.Controls.Add(this.lblApellido1);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCedula);
-            this.Controls.Add(this.metroButton2);
-            this.Controls.Add(this.metroButton1);
-            this.Controls.Add(this.btnNewProjection);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dtvClientes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmClients";
             this.Resizable = false;
             this.Text = "Clientes";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmClients_FormClosed);
             this.Load += new System.EventHandler(this.FrmClients_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtvClientes)).EndInit();
             this.ResumeLayout(false);
@@ -352,9 +357,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido2;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdInstitucion;
-        private MetroFramework.Controls.MetroButton btnNewProjection;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton btnNuevo;
+        private MetroFramework.Controls.MetroButton btnEditar;
+        private MetroFramework.Controls.MetroButton btnEliminar;
         private MetroFramework.Controls.MetroLabel lblCedula;
         private MetroFramework.Controls.MetroLabel lblNombre;
         private MetroFramework.Controls.MetroLabel lblApellido1;

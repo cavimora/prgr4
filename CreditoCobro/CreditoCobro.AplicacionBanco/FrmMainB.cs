@@ -41,10 +41,10 @@ namespace CreditoCobro.AplicacionBanco
                 plnMenu.Width = 55;
                 rec1.Visible = false;
                 BtnMore.Location = new Point(10,8);
-                btnProyections.Enabled = false;
+                //btnProyections.Enabled = false;
                 //BtnArchives.Enabled = false;
-                BtnPays.Enabled = false;
-                btnNewClient.Enabled = false;
+                //BtnPays.Enabled = false;
+                //btnNewClient.Enabled = false;
                 //btnNewOper.Enabled = false;
             }
             
@@ -84,12 +84,23 @@ namespace CreditoCobro.AplicacionBanco
             if(projections == null)
             {
                 projections = new FrmProjections();
+                projections.FormClosing += CerrarProyecciones;
                 projections.Show();
             }
             else
             {
                 projections.Focus();
             }
+        }
+
+        private void CerrarClientes(object sender, CancelEventArgs e)
+        {
+            clientes = null;
+        }
+
+        private void CerrarProyecciones(object sender, CancelEventArgs e)
+        {
+            projections = null;
         }
 
         private void FrmMainB_Load(object sender, EventArgs e)
@@ -106,6 +117,7 @@ namespace CreditoCobro.AplicacionBanco
             if (clientes == null)
             {
                 clientes = new FrmClients();
+                clientes.FormClosing += CerrarClientes;
                 clientes.Show();
             }
             else
