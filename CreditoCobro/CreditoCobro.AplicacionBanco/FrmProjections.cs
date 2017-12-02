@@ -104,7 +104,42 @@ namespace CreditoCobro.AplicacionBanco
         //metodo para exportar archivos texto plano 
         public void exportarTxt()
         {
-            //TextWriter sw = new TextWriter("@C:\Users\luisd\OneDrive\Documentos\CarpetaDefault\");
+            SaveFileDialog sFD = new SaveFileDialog();
+            TextWriter sWriter = new StreamWriter(vFileDialog);
+            sFD.Filter = "TEXTO PLANO|*.txt";     //se definen los tipos de datos
+
+            if (vFileDialog != null)  // si el archivo ya existe
+            {
+                for (int i = 0; i < dtvProyeccion.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dtvProyeccion.Columns.Count; j++)
+                    {
+                        sWriter.WriteLine("\t" + dtvProyeccion.Rows[i].Cells[j].Value.ToString());                        
+                    }
+                    sWriter.WriteLine("");
+                    sWriter.WriteLine("----------------------------------------------------------");
+                }
+                sWriter.Close();
+                
+            }
+            else // si el archivo no existe
+            {
+                if (sFD.ShowDialog() == DialogResult.OK)
+                {
+                    vFileDialog = sFD.FileName;  //se le asigna un nombre
+                    sWriter = new StreamWriter(vFileDialog);
+                    for (int i = 0; i < dtvProyeccion.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dtvProyeccion.Columns.Count; j++)
+                        {
+                            sWriter.WriteLine("\t" + dtvProyeccion.Rows[i].Cells[j].Value.ToString()+"\t" +"|");
+                        }
+                        sWriter.WriteLine("");
+                        sWriter.WriteLine("----------------------------------------------------------");
+                    }
+                    sWriter.Close();
+                }
+            }
         }
          
         #endregion
