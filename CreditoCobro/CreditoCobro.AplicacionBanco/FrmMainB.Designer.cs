@@ -88,7 +88,7 @@
             this.btnNewClient.ForeColor = System.Drawing.SystemColors.Control;
             this.btnNewClient.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.customer_service;
             this.btnNewClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewClient.Location = new System.Drawing.Point(10, 223);
+            this.btnNewClient.Location = new System.Drawing.Point(10, 263);
             this.btnNewClient.Name = "btnNewClient";
             this.btnNewClient.Size = new System.Drawing.Size(182, 39);
             this.btnNewClient.TabIndex = 14;
@@ -122,7 +122,7 @@
             this.BtnPays.ForeColor = System.Drawing.SystemColors.Control;
             this.BtnPays.Image = global::CreditoCobro.AplicacionBanco.Properties.Resources.point_of_service;
             this.BtnPays.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnPays.Location = new System.Drawing.Point(7, 178);
+            this.BtnPays.Location = new System.Drawing.Point(7, 195);
             this.BtnPays.Name = "BtnPays";
             this.BtnPays.Size = new System.Drawing.Size(182, 39);
             this.BtnPays.TabIndex = 12;

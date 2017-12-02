@@ -39,11 +39,18 @@ namespace CreditoCobro.AplicacionBanco
             dtvClientes.DataSource = _clientes;
         }
         private void btnNewProjection_Click(object sender, EventArgs e)
-        {
-            var index = dtvCreditos.CurrentCell.RowIndex;
-            _ncredito = new Credito(_cDetallado.Creditos.ElementAt(index));
-            dtvProyeccion.DataSource = null;
-            dtvProyeccion.DataSource = _ncredito.GetProyeccion();
+        {          
+            try
+            {
+                var index = dtvCreditos.CurrentCell.RowIndex;
+                _ncredito = new Credito(_cDetallado.Creditos.ElementAt(index));
+                dtvProyeccion.DataSource = null;
+                dtvProyeccion.DataSource = _ncredito.GetProyeccion();
+            }
+            catch (Exception ex)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Debe seleccionar la información de la persona deseada ", "Alerta", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+            }
         }
              
         DtoCliente _cDetallado;
@@ -59,17 +66,16 @@ namespace CreditoCobro.AplicacionBanco
         private void BtnArchives_Click(object sender, EventArgs e)
         {
             ///Codigo Para Exportar Los Datos de un Cliente
-            Exportar();
+            //ExportarExcel();
         }
 
 
-        #region Metodos Ecportacion/Importacion
-        //metodo para exportar archivos
-        public void Exportar()
+        #region Metodos Exportacion/Importacion
+        //metodo para exportar archivos excel
+        public void ExportarExcel()
         {
-            SaveFileDialog oFD = new SaveFileDialog();
-            oFD.Filter = "Excel|*.xlsx";// Se define el tipo de dato a guardar            
-
+            SaveFileDialog oFD = new SaveFileDialog();      
+            oFD.Filter = "Excel|*.xlsx|XML|*.xml|TXT|*.txt";// Se define el tipo de dato a guardar 
             if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
             {
                 Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();   
@@ -95,32 +101,12 @@ namespace CreditoCobro.AplicacionBanco
             }
         }
 
-        //metodo para importar archivos
-        public void Importar()
+        //metodo para exportar archivos texto plano 
+        public void exportarTxt()
         {
-            SaveFileDialog sFD = new SaveFileDialog();
-            sFD.Filter = "Excel|*.xlxs";     //se definen los tipos de datos
-            sFD.Filter = "Bloc de Notas|*.txt";     //se definen los tipos de datos
-
-            if (vFileDialog != null)  // si el archivo ya existe
-            {
-                using (StreamWriter sWriter = new StreamWriter(vFileDialog))
-                {
-                    sWriter.Write(dtvClientes.Text); // se sobreescribe
-                }
-            }
-            else // si el archivo no existe
-            {
-                if (sFD.ShowDialog() == DialogResult.OK)
-                {
-                    vFileDialog = sFD.FileName;  //se le asigna un nombre
-                    using (StreamWriter sWriter = new StreamWriter(sFD.FileName))
-                    {
-                        sWriter.Write(dtvClientes.Text); //lo guarda el archivo con el nombre asignado con anterioridad
-                    }
-                }
-            }
+            //TextWriter sw = new TextWriter("@C:\Users\luisd\OneDrive\Documentos\CarpetaDefault\");
         }
+         
         #endregion
     }
 }
