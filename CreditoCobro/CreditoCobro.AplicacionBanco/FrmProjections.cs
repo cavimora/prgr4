@@ -75,7 +75,7 @@ namespace CreditoCobro.AplicacionBanco
         public void ExportarExcel()
         {
             SaveFileDialog oFD = new SaveFileDialog();      
-            oFD.Filter = "Excel|*.xlsx|XML|*.xml|TXT|*.txt";// Se define el tipo de dato a guardar 
+            oFD.Filter = "Excel|*.xlsx"; // Se define el tipo de dato a guardar 
             if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
             {
                 Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();   
@@ -102,46 +102,44 @@ namespace CreditoCobro.AplicacionBanco
         }
 
         //metodo para exportar archivos texto plano 
+
         public void exportarTxt()
         {
             SaveFileDialog sFD = new SaveFileDialog();
-            TextWriter sWriter = new StreamWriter(vFileDialog);
             sFD.Filter = "TEXTO PLANO|*.txt";     //se definen los tipos de datos
-
-            if (vFileDialog != null)  // si el archivo ya existe
+            if (sFD.ShowDialog() == DialogResult.OK)
             {
+                vFileDialog = sFD.FileName;  //se le asigna un nombre
+                TextWriter sWriter = new StreamWriter(vFileDialog);
+                sWriter.Write("\t" +"Cuota" +"\t"+"|"+ "\t" + "Principal" + "\t" + "|" + "\t" + "Intereses" + "\t" + "|" + "\t" + "Saldo" + "\t" + "|" + "\t" + "isPago" + "\t" +Environment.NewLine);
+                sWriter.WriteLine("--------------------------------------------------------------------------------------------------------------------");
                 for (int i = 0; i < dtvProyeccion.Rows.Count; i++)
                 {
                     for (int j = 0; j < dtvProyeccion.Columns.Count; j++)
                     {
-                        sWriter.WriteLine("\t" + dtvProyeccion.Rows[i].Cells[j].Value.ToString());                        
+                        sWriter.Write("\t"+dtvProyeccion.Rows[i].Cells[j].Value.ToString() + "\t" + "|");
                     }
                     sWriter.WriteLine("");
-                    sWriter.WriteLine("----------------------------------------------------------");
+                    sWriter.WriteLine("--------------------------------------------------------------------------------------------------------------------");
                 }
                 sWriter.Close();
-                
-            }
-            else // si el archivo no existe
-            {
-                if (sFD.ShowDialog() == DialogResult.OK)
-                {
-                    vFileDialog = sFD.FileName;  //se le asigna un nombre
-                    sWriter = new StreamWriter(vFileDialog);
-                    for (int i = 0; i < dtvProyeccion.Rows.Count; i++)
-                    {
-                        for (int j = 0; j < dtvProyeccion.Columns.Count; j++)
-                        {
-                            sWriter.WriteLine("\t" + dtvProyeccion.Rows[i].Cells[j].Value.ToString()+"\t" +"|");
-                        }
-                        sWriter.WriteLine("");
-                        sWriter.WriteLine("----------------------------------------------------------");
-                    }
-                    sWriter.Close();
-                }
             }
         }
-         
-        #endregion
+#endregion
+
+private void documentoExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarExcel();
+        }
+
+        private void textoPlanoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            exportarTxt();
+        }
+
+        private void documentoXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
