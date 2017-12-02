@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CreditoCobro.NegocioBanco;
 using CreditoCobro.DTO;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace CreditoCobro.AplicacionBanco
 {
@@ -18,6 +20,7 @@ namespace CreditoCobro.AplicacionBanco
         private Clientes _nclientes;
         private Credito _ncredito;
         private List<DtoCliente> _clientes;
+        string vFileDialog;
         public FrmProjections()
         {
             InitializeComponent();
@@ -55,6 +58,71 @@ namespace CreditoCobro.AplicacionBanco
         private void BtnArchives_Click(object sender, EventArgs e)
         {
             ///Codigo Para Exportar Los Datos de un Cliente
+            Exportar();
         }
+
+
+        #region Metodos Ecportacion/Importacion
+        //metodo para exportar archivos
+        public void Exportar()
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.Filter = "Excel|*.xlxs";
+            oFD.Filter = "Bloc de Notas|*.txt";
+            // oFD.Filter = "Excel|*.xml";// Se define el tipo de dato a guardar
+
+            if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
+            {
+                Microsoft.Office.Interop.Excel.ApplicationClass ExcelApp = new Microsoft.Office.Interop.Excel.ApplicationClass();
+                ExcelApp.Aplication.workbooks.Add(Type.Missing);
+                ExcelApp.Columns.ColumnWidth = 20;
+                vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
+
+                for (int i = 1; i < dtvClientes.Columns.Count + 1; i++) // se recorren las columnas del dtvClientes
+                {
+                    ExcelApp.Cells[1, i] = dtvClientes.Rows[i - 1].HeaderCell; // Se colocan las header del dtvClientes
+                }
+
+                for (int i = 0; i < dtvClientes.Rows.Count; i++) // se recorren las filas 
+                {
+                    for (int j = 0; j < dtvClientes.Columns.Count; j++)// se recorren cada columns de la fila
+                    {
+                        ExcelApp.Cells[i + 2, j + 1] = dtvClientes.Rows[i].Cells[j].Value.ToString(); // se alamcena la fila de la posicion i y la columna j
+                    }
+                }
+
+                ExcelApp.ActiveWorkBook.SaveCopyAs(oFD.FileName.ToString());
+                ExcelApp.ActiveWorkBook.Saved = true;
+                ExcelApp.Quit();
+            }
+        }
+
+        //metodo para importar archivos
+        public void Importar()
+        {
+            SaveFileDialog sFD = new SaveFileDialog();
+            sFD.Filter = "Excel|*.xlxs";     //se definen los tipos de datos
+            sFD.Filter = "Bloc de Notas|*.txt";     //se definen los tipos de datos
+
+            if (vFileDialog != null)  // si el archivo ya existe
+            {
+                using (StreamWriter sWriter = new StreamWriter(vFileDialog))
+                {
+                    sWriter.Write(dtvClientes.Text); // se sobreescribe
+                }
+            }
+            else // si el archivo no existe
+            {
+                if (sFD.ShowDialog() == DialogResult.OK)
+                {
+                    vFileDialog = sFD.FileName;  //se le asigna un nombre
+                    using (StreamWriter sWriter = new StreamWriter(sFD.FileName))
+                    {
+                        sWriter.Write(dtvClientes.Text); //lo guarda el archivo con el nombre asignado con anterioridad
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }
