@@ -11,6 +11,7 @@ using CreditoCobro.NegocioBanco;
 using CreditoCobro.DTO;
 using System.IO;
 using System.Text.RegularExpressions;
+using Microsoft.Office.Interop.Excel;
 
 namespace CreditoCobro.AplicacionBanco
 {
@@ -66,33 +67,30 @@ namespace CreditoCobro.AplicacionBanco
         //metodo para exportar archivos
         public void Exportar()
         {
-            OpenFileDialog oFD = new OpenFileDialog();
-            oFD.Filter = "Excel|*.xlxs";
-            oFD.Filter = "Bloc de Notas|*.txt";
-            // oFD.Filter = "Excel|*.xml";// Se define el tipo de dato a guardar
+            SaveFileDialog oFD = new SaveFileDialog();
+            oFD.Filter = "Excel|*.xlsx";// Se define el tipo de dato a guardar            
 
             if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
             {
-                Microsoft.Office.Interop.Excel.ApplicationClass ExcelApp = new Microsoft.Office.Interop.Excel.ApplicationClass();
-                ExcelApp.Aplication.workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();   
+                ExcelApp.Application.Workbooks.Add(Type.Missing);
                 ExcelApp.Columns.ColumnWidth = 20;
                 vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
 
-                for (int i = 1; i < dtvClientes.Columns.Count + 1; i++) // se recorren las columnas del dtvClientes
+                for (int i = 1; i < dtvProyeccion.Columns.Count + 1; i++) // se recorren las columnas del dtvClientes
                 {
-                    ExcelApp.Cells[1, i] = dtvClientes.Rows[i - 1].HeaderCell; // Se colocan las header del dtvClientes
+                    ExcelApp.Cells[1, i] = dtvProyeccion.Columns[i - 1].HeaderText; // Se colocan las header del dtvClientes
                 }
 
-                for (int i = 0; i < dtvClientes.Rows.Count; i++) // se recorren las filas 
+                for (int i = 0; i < dtvProyeccion.Rows.Count; i++) // se recorren las filas 
                 {
-                    for (int j = 0; j < dtvClientes.Columns.Count; j++)// se recorren cada columns de la fila
+                    for (int j = 0; j < dtvProyeccion.Columns.Count; j++)// se recorren cada columns de la fila
                     {
-                        ExcelApp.Cells[i + 2, j + 1] = dtvClientes.Rows[i].Cells[j].Value.ToString(); // se alamcena la fila de la posicion i y la columna j
+                        ExcelApp.Cells[i + 2, j + 1] = dtvProyeccion.Rows[i].Cells[j].Value.ToString(); // se alamcena la fila de la posicion i y la columna j
                     }
                 }
-
-                ExcelApp.ActiveWorkBook.SaveCopyAs(oFD.FileName.ToString());
-                ExcelApp.ActiveWorkBook.Saved = true;
+                ExcelApp.ActiveWorkbook.SaveCopyAs(oFD.FileName.ToString());
+                ExcelApp.ActiveWorkbook.Saved = true;
                 ExcelApp.Quit();
             }
         }

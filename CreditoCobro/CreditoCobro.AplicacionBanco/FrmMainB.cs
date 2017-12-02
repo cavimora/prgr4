@@ -41,11 +41,11 @@ namespace CreditoCobro.AplicacionBanco
                 plnMenu.Width = 55;
                 rec1.Visible = false;
                 BtnMore.Location = new Point(10,8);
-                //btnProyections.Enabled = false;
-                //BtnArchives.Enabled = false;
-                //BtnPays.Enabled = false;
-                //btnNewClient.Enabled = false;
-                //btnNewOper.Enabled = false;
+                btnProyections.Enabled = false;
+                //bt.Enabled = false;
+                BtnPays.Enabled = false;
+                btnNewClient.Enabled = false;
+                btnNewClient.Enabled = false;
             }
             
         }
@@ -109,6 +109,7 @@ namespace CreditoCobro.AplicacionBanco
             btnProyections.Enabled = false;
             //BtnArchives.Enabled = false;
             BtnPays.Enabled = false;
+            btnNewClient.Enabled = false;
         }
 
         FrmClients clientes;
