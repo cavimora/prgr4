@@ -142,8 +142,6 @@ namespace CreditoCobro.AplicacionBanco
             tCliente.Columns.Add("Apellido 1");
             tCliente.Columns.Add("Apellido 2");
             tCliente.Columns.Add("Creditos", typeof (System.Data.DataTable));
-            tCliente.Columns.Add("infoProyeccion", typeof(System.Data.DataTable));
-
             DataRow rowCliente = tCliente.NewRow();
 
             rowCliente["Cedula"] = _cDetallado.IdCliente;
@@ -156,8 +154,10 @@ namespace CreditoCobro.AplicacionBanco
             tCreditos.Columns.Add("Monto");
             tCreditos.Columns.Add("Plazo");
             tCreditos.Columns.Add("Tasa");
+            tCreditos.Columns.Add("Proyeccion", typeof(System.Data.DataTable));
 
             System.Data.DataTable tProyecciones = new System.Data.DataTable();
+
             tProyecciones.TableName = "InfoProyeccion";
             tProyecciones.Columns.Add("Cuota");
             tProyecciones.Columns.Add("Principal");
@@ -170,24 +170,23 @@ namespace CreditoCobro.AplicacionBanco
                 row["Monto"] = cred.Monto;
                 row["Plazo"] = cred.Plazo;
                 row["Tasa"] = cred.Tasa;
-                tCreditos.Rows.Add(row);   
-            }
- 
-            foreach (DataGridViewRow dgv in gDT.Rows)
-            {
-                DataRow row = tProyecciones.NewRow();
-
-                row["Cuota"] = dgv.Cells[0].Value.ToString();
-                row["Principal"] = dgv.Cells[1].Value.ToString();
-                row["Intereses"] = dgv.Cells[2].Value.ToString();
-                row["Saldo"] = dgv.Cells[3].Value.ToString();
-                row["Pago"] = dgv.Cells[4].Value.ToString();
-                tProyecciones.Rows.Add(row);
-            }
+               
+                DataRow row2 = tProyecciones.NewRow();
+                foreach (DataGridViewRow dgv in gDT.Rows)
+                {
+                    row2["Cuota"] = dgv.Cells[0].Value.ToString();
+                    row2["Principal"] = dgv.Cells[1].Value.ToString();
+                    row2["Intereses"] = dgv.Cells[2].Value.ToString();
+                    row2["Saldo"] = dgv.Cells[3].Value.ToString();
+                    row2["Pago"] = dgv.Cells[4].Value.ToString();
+                    tProyecciones.Rows.Add(row2);
+                }
+                row["Proyeccion"] = row2;
+                tCreditos.Rows.Add(row);
+            }            
             rowCliente["Creditos"] = tCreditos;
             rowCliente["infoProyeccion"] = tProyecciones;
             tCliente.Rows.Add(rowCliente);
-
             return tCliente;
         }
         //metodo para generar archivo XML
