@@ -48,9 +48,11 @@
             this.textoPlanoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentoXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarDesdeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbCredits = new MetroFramework.Controls.MetroLabel();
             this.lbProjections = new MetroFramework.Controls.MetroLabel();
-            this.importarDesdeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargarDesdeTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtvProyeccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvClientes)).BeginInit();
@@ -173,7 +175,7 @@
             // 
             // btnNewProjection
             // 
-            this.btnNewProjection.Location = new System.Drawing.Point(765, 265);
+            this.btnNewProjection.Location = new System.Drawing.Point(541, 265);
             this.btnNewProjection.Name = "btnNewProjection";
             this.btnNewProjection.Size = new System.Drawing.Size(119, 37);
             this.btnNewProjection.TabIndex = 17;
@@ -199,8 +201,8 @@
             this.textoPlanoToolStripMenuItem,
             this.documentoXMLToolStripMenuItem});
             this.exportarComoToolStripMenuItem.Name = "exportarComoToolStripMenuItem";
-            this.exportarComoToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.exportarComoToolStripMenuItem.Text = "Exportar como:";
+            this.exportarComoToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.exportarComoToolStripMenuItem.Text = "Exportar";
             // 
             // documentoExcelToolStripMenuItem
             // 
@@ -226,10 +228,18 @@
             // importarComoToolStripMenuItem
             // 
             this.importarComoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importarDesdeXMLToolStripMenuItem});
+            this.importarDesdeXMLToolStripMenuItem,
+            this.cargarDesdeTXTToolStripMenuItem});
             this.importarComoToolStripMenuItem.Name = "importarComoToolStripMenuItem";
             this.importarComoToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.importarComoToolStripMenuItem.Text = "Importar";
+            // 
+            // importarDesdeXMLToolStripMenuItem
+            // 
+            this.importarDesdeXMLToolStripMenuItem.Name = "importarDesdeXMLToolStripMenuItem";
+            this.importarDesdeXMLToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.importarDesdeXMLToolStripMenuItem.Text = "Importar desde XML";
+            this.importarDesdeXMLToolStripMenuItem.Click += new System.EventHandler(this.importarDesdeXMLToolStripMenuItem_Click);
             // 
             // lbCredits
             // 
@@ -249,18 +259,29 @@
             this.lbProjections.TabIndex = 22;
             this.lbProjections.Text = "Proyecciones";
             // 
-            // importarDesdeXMLToolStripMenuItem
+            // cargarDesdeTXTToolStripMenuItem
             // 
-            this.importarDesdeXMLToolStripMenuItem.Name = "importarDesdeXMLToolStripMenuItem";
-            this.importarDesdeXMLToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.importarDesdeXMLToolStripMenuItem.Text = "Importar desde XML";
-            this.importarDesdeXMLToolStripMenuItem.Click += new System.EventHandler(this.importarDesdeXMLToolStripMenuItem_Click);
+            this.cargarDesdeTXTToolStripMenuItem.Name = "cargarDesdeTXTToolStripMenuItem";
+            this.cargarDesdeTXTToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.cargarDesdeTXTToolStripMenuItem.Text = "Cargar desde TXT";
+            this.cargarDesdeTXTToolStripMenuItem.Click += new System.EventHandler(this.cargarDesdeTXTToolStripMenuItem_Click);
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(765, 265);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(119, 37);
+            this.metroButton1.TabIndex = 23;
+            this.metroButton1.Text = "Limpiar Datos";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // FrmProjections
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 714);
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.lbProjections);
             this.Controls.Add(this.lbCredits);
             this.Controls.Add(this.btnNewProjection);
@@ -308,5 +329,7 @@
         private MetroFramework.Controls.MetroLabel lbCredits;
         private MetroFramework.Controls.MetroLabel lbProjections;
         private System.Windows.Forms.ToolStripMenuItem importarDesdeXMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cargarDesdeTXTToolStripMenuItem;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

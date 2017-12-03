@@ -220,6 +220,7 @@
             this.btnNuevo.TabIndex = 34;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseSelectable = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // FrmOperations
             // 

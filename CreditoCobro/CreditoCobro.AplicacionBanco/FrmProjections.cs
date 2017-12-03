@@ -44,8 +44,10 @@ namespace CreditoCobro.AplicacionBanco
         }
         private void btnNewProjection_Click(object sender, EventArgs e)
         {
+            
             try
             {
+                
                 var index = dtvCreditos.CurrentCell.RowIndex;
                 _ncredito = new Credito(_cDetallado.Creditos.ElementAt(index));
                 dtvProyeccion.DataSource = null;
@@ -117,15 +119,14 @@ namespace CreditoCobro.AplicacionBanco
                 vFileDialog = sFD.FileName;  //se le asigna un nombre
                 TextWriter sWriter = new StreamWriter(vFileDialog);
                 sWriter.Write("\t" + "Cuota" + "\t" + "|" + "\t" + "Principal" + "\t" + "|" + "\t" + "Intereses" + "\t" + "|" + "\t" + "Saldo" + "\t" + "|" + "\t" + "isPago" + "\t" + Environment.NewLine);
-                sWriter.WriteLine("--------------------------------------------------------------------------------------------------------------------");
+                //sWriter.WriteLine("--------------------------------------------------------------------------------------------------------------------");
                 for (int i = 0; i < dtvProyeccion.Rows.Count; i++)
                 {
                     for (int j = 0; j < dtvProyeccion.Columns.Count; j++)
                     {
                         sWriter.Write("\t" + dtvProyeccion.Rows[i].Cells[j].Value.ToString() + "\t" + "|");
                     }
-                    sWriter.WriteLine("");
-                    sWriter.WriteLine("--------------------------------------------------------------------------------------------------------------------");
+                    sWriter.WriteLine("");  
                 }
                 sWriter.Close();
             }
@@ -189,16 +190,16 @@ namespace CreditoCobro.AplicacionBanco
             OpenFileDialog oFD = new OpenFileDialog();
             oFD.Filter = "TEXTO PLANO|*.txt";    // Se define el tipo de dato a cargar            
             char caracter = '|';
-
+            dtvProyeccion.DataSource = null;
             if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
             {
                 vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
-                lecturaArchivo(dtvClientes, caracter, vFileDialog);
+                lecturaArchivo(dtvProyeccion, caracter, vFileDialog);
             }
         }
 
         //Metodo para cargar los titulos del datagridview
-        public static void nombrarTitulos(DataGridView tabla, string[] titulos)
+        public void nombrarTitulos(DataGridView tabla, string[] titulos)
         {
             for (int i = 0; i <= tabla.ColumnCount - 1; i++)
             {
@@ -207,7 +208,7 @@ namespace CreditoCobro.AplicacionBanco
         }
 
         //metodo para agregar las filas al datagridview
-        public static void agregarFila(DataGridView tabla, string Linea, char caracter, int fila)
+        public void agregarFila(DataGridView tabla, string Linea, char caracter, int fila)
         {
             string[] aFilas = Linea.Split(caracter);
             tabla.Rows.Add(aFilas);
@@ -219,7 +220,7 @@ namespace CreditoCobro.AplicacionBanco
             StreamReader sReader = new StreamReader(ruta);
             int fila = 0;
             string Linea = "";
-            tabla.Rows.Clear();
+            //tabla.Rows.Clear();
 
             do
             {
@@ -229,12 +230,12 @@ namespace CreditoCobro.AplicacionBanco
                     if (fila == 0)
                     {
                         dtvProyeccion.ColumnCount = Linea.Split(caracter).Length;
-                        nombrarTitulos(dtvProyeccion, Linea.Split(caracter));
+                        nombrarTitulos(tabla, Linea.Split(caracter));
                         fila += 1;
                     }
                     else
                     {
-                        agregarFila(dtvClientes, Linea, caracter, fila);
+                        agregarFila(tabla, Linea, caracter, fila);
                         fila += 1;
                     }
                 }
@@ -269,6 +270,20 @@ namespace CreditoCobro.AplicacionBanco
             cargarXML();
         }
 
+        private void cargarDesdeTXTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cargarTxt();
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            clearGrids();
+        }
+        public void clearGrids()
+        {
+            dtvCreditos.DataSource = null;
+            dtvProyeccion.DataSource = null;
+        }
     }    
 
 }
