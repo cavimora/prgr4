@@ -24,14 +24,14 @@ namespace CreditoCobro.AplicacionBanco
         private List<DtoCliente> _clientes;
         string vFileDialog;
         public System.Data.DataTable tXML;
-        
+
 
         public FrmProjections()
         {
             InitializeComponent();
             _nclientes = new Clientes();
         }
-           
+
         private void FrmProjections_Load(object sender, EventArgs e)
         {
             _clientes = _nclientes.GetClientes();
@@ -43,7 +43,7 @@ namespace CreditoCobro.AplicacionBanco
             dtvClientes.DataSource = _clientes;
         }
         private void btnNewProjection_Click(object sender, EventArgs e)
-        {          
+        {
             try
             {
                 var index = dtvCreditos.CurrentCell.RowIndex;
@@ -57,7 +57,7 @@ namespace CreditoCobro.AplicacionBanco
                 MetroFramework.MetroMessageBox.Show(this, "Debe seleccionar la información de la persona deseada ", "Alerta", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
             }
         }
-             
+
         DtoCliente _cDetallado;
         private void dtvClientes_Click(object sender, EventArgs e)
         {
@@ -105,7 +105,7 @@ namespace CreditoCobro.AplicacionBanco
                 ExcelApp.Quit();
             }
         }
-    
+
         //metodo para exportar archivos texto plano 
 
         public void exportarTxt()
@@ -116,13 +116,13 @@ namespace CreditoCobro.AplicacionBanco
             {
                 vFileDialog = sFD.FileName;  //se le asigna un nombre
                 TextWriter sWriter = new StreamWriter(vFileDialog);
-                sWriter.Write("\t" +"Cuota" +"\t"+"|"+ "\t" + "Principal" + "\t" + "|" + "\t" + "Intereses" + "\t" + "|" + "\t" + "Saldo" + "\t" + "|" + "\t" + "isPago" + "\t" +Environment.NewLine);
+                sWriter.Write("\t" + "Cuota" + "\t" + "|" + "\t" + "Principal" + "\t" + "|" + "\t" + "Intereses" + "\t" + "|" + "\t" + "Saldo" + "\t" + "|" + "\t" + "isPago" + "\t" + Environment.NewLine);
                 sWriter.WriteLine("--------------------------------------------------------------------------------------------------------------------");
                 for (int i = 0; i < dtvProyeccion.Rows.Count; i++)
                 {
                     for (int j = 0; j < dtvProyeccion.Columns.Count; j++)
                     {
-                        sWriter.Write("\t"+dtvProyeccion.Rows[i].Cells[j].Value.ToString() + "\t" + "|");
+                        sWriter.Write("\t" + dtvProyeccion.Rows[i].Cells[j].Value.ToString() + "\t" + "|");
                     }
                     sWriter.WriteLine("");
                     sWriter.WriteLine("--------------------------------------------------------------------------------------------------------------------");
@@ -177,7 +177,7 @@ namespace CreditoCobro.AplicacionBanco
             if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
             {
                 vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
-                DataTable rXML = new DataTable();
+                System.Data.DataTable rXML = new System.Data.DataTable();
                 rXML.ReadXml(vFileDialog);
                 dtvProyeccion.DataSource = rXML;
             }
@@ -197,10 +197,12 @@ namespace CreditoCobro.AplicacionBanco
         private void documentoXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             exportarXML();
+
         }
 
-       
+        private void importarDesdeXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cargarXML();
+        }
     }
-
-  
 }

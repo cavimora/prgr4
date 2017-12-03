@@ -50,6 +50,7 @@
             this.importarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbCredits = new MetroFramework.Controls.MetroLabel();
             this.lbProjections = new MetroFramework.Controls.MetroLabel();
+            this.importarDesdeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dtvProyeccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvClientes)).BeginInit();
@@ -224,6 +225,8 @@
             // 
             // importarComoToolStripMenuItem
             // 
+            this.importarComoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importarDesdeXMLToolStripMenuItem});
             this.importarComoToolStripMenuItem.Name = "importarComoToolStripMenuItem";
             this.importarComoToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.importarComoToolStripMenuItem.Text = "Importar";
@@ -245,6 +248,13 @@
             this.lbProjections.Size = new System.Drawing.Size(85, 19);
             this.lbProjections.TabIndex = 22;
             this.lbProjections.Text = "Proyecciones";
+            // 
+            // importarDesdeXMLToolStripMenuItem
+            // 
+            this.importarDesdeXMLToolStripMenuItem.Name = "importarDesdeXMLToolStripMenuItem";
+            this.importarDesdeXMLToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.importarDesdeXMLToolStripMenuItem.Text = "Importar desde XML";
+            this.importarDesdeXMLToolStripMenuItem.Click += new System.EventHandler(this.importarDesdeXMLToolStripMenuItem_Click);
             // 
             // FrmProjections
             // 
@@ -297,5 +307,6 @@
         private System.Windows.Forms.ToolStripMenuItem importarComoToolStripMenuItem;
         private MetroFramework.Controls.MetroLabel lbCredits;
         private MetroFramework.Controls.MetroLabel lbProjections;
+        private System.Windows.Forms.ToolStripMenuItem importarDesdeXMLToolStripMenuItem;
     }
 }
