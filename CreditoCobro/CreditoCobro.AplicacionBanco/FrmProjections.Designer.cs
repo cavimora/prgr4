@@ -50,10 +50,10 @@
             this.importarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarDesdeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarDesdeTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarDesdeEXCELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbCredits = new MetroFramework.Controls.MetroLabel();
             this.lbProjections = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.importarDesdeEXCELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dtvProyeccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvClientes)).BeginInit();
@@ -250,6 +250,13 @@
             this.cargarDesdeTXTToolStripMenuItem.Text = "Importar desde TXT";
             this.cargarDesdeTXTToolStripMenuItem.Click += new System.EventHandler(this.cargarDesdeTXTToolStripMenuItem_Click);
             // 
+            // importarDesdeEXCELToolStripMenuItem
+            // 
+            this.importarDesdeEXCELToolStripMenuItem.Name = "importarDesdeEXCELToolStripMenuItem";
+            this.importarDesdeEXCELToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.importarDesdeEXCELToolStripMenuItem.Text = "Importar desde EXCEL";
+            this.importarDesdeEXCELToolStripMenuItem.Click += new System.EventHandler(this.importarDesdeEXCELToolStripMenuItem_Click);
+            // 
             // lbCredits
             // 
             this.lbCredits.AutoSize = true;
@@ -277,13 +284,6 @@
             this.metroButton1.Text = "Limpiar Datos";
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
-            // 
-            // importarDesdeEXCELToolStripMenuItem
-            // 
-            this.importarDesdeEXCELToolStripMenuItem.Name = "importarDesdeEXCELToolStripMenuItem";
-            this.importarDesdeEXCELToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.importarDesdeEXCELToolStripMenuItem.Text = "Importar desde EXCEL";
-            this.importarDesdeEXCELToolStripMenuItem.Click += new System.EventHandler(this.importarDesdeEXCELToolStripMenuItem_Click);
             // 
             // FrmProjections
             // 
