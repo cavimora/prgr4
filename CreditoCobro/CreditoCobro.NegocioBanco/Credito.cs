@@ -47,6 +47,31 @@ namespace CreditoCobro.NegocioBanco
             return _proyeccion;
         }
 
+        public List<DtoProyeccion> GetProyeccion(double Tasa, double Monto, int Plazo)
+        {
+            double cuota = Math.Round((Financial.Pmt(Tasa / 100, Plazo, -Monto)), _decimalPoints, MidpointRounding.AwayFromZero);//*100)/100;
+            double saldo = Monto;
+            _proyeccion = new List<DtoProyeccion>();
+            //int i = 1;
+            //while(saldo > 0)
+            for (int i = 0; i < _credito.Plazo; i++)
+            {
+                var intereses = Math.Round((saldo * (Tasa / 100)), _decimalPoints, MidpointRounding.AwayFromZero);//*100)/100;
+                var principal = Math.Round((cuota - intereses), _decimalPoints, MidpointRounding.AwayFromZero);//*100)/100;
+                saldo = Math.Round((saldo - principal), _decimalPoints, MidpointRounding.AwayFromZero);//*100)/100;
+                //saldo = saldo < 0 ? Math.Round(saldo) : saldo;
+                _proyeccion.Add(new DtoProyeccion()
+                {
+                    Cuota = i + 1,
+                    Intereses = intereses,
+                    Principal = principal,
+                    Saldo = saldo
+                });
+            }
+
+            return _proyeccion;
+        }
+
 
         public bool AddCredito(DtoCredito credito, DtoCliente cliente)
         {
@@ -62,7 +87,25 @@ namespace CreditoCobro.NegocioBanco
                         Tasa = (decimal)credito.Tasa
                     };
                     _db.B_Credito.Add(nuevoCredito);
-                    if (_db.SaveChanges() <= 0) throw new Exception("Hubo un problema a la hora de ingresar el cliente, por favor intente de nuevo.");
+                    if (_db.SaveChanges() <= 0) throw new Exception("Hubo un problema a la hora de ingresar el credito, por favor intente de nuevo.");
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool DeleteCredito(DtoCredito credito)
+        {
+            try
+            {
+                using (_db = new Entities())
+                {
+                    var cred = _db.B_Credito.Where(c => c.IdCredito == credito.Id).FirstOrDefault();
+                    _db.B_Credito.Remove(cred);
+                    if (_db.SaveChanges() <= 0) throw new Exception("Hubo un problema a la hora de eliminar el credito, por favor intente de nuevo.");
                 }
                 return true;
             }

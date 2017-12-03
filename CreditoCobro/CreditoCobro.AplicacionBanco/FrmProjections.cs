@@ -138,6 +138,8 @@ namespace CreditoCobro.AplicacionBanco
         }
         public System.Data.DataTable llenarXML(DataGridView gDT)
         {
+
+            List<DtoProyeccion> proyeccion;
             System.Data.DataTable tCliente = new System.Data.DataTable();
             tCliente.TableName = "Empleado";
             tCliente.Columns.Add("Cedula");
@@ -175,7 +177,8 @@ namespace CreditoCobro.AplicacionBanco
                 row["Tasa"] = cred.Tasa;
 
                 DataRow row2 = null;
-                foreach (DtoProyeccion dgv in _proyeccion)
+                proyeccion = _ncredito.GetProyeccion(cred.Tasa,cred.Monto,cred.Plazo);
+                foreach (DtoProyeccion dgv in proyeccion)
                 {
                     row2 = tProyecciones.NewRow();
                     row2["Cuota"] = dgv.Cuota;

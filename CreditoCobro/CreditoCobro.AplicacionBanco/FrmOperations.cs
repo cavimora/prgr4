@@ -114,9 +114,14 @@ namespace CreditoCobro.AplicacionBanco
             }
             else
             {
+                var index = dtvCreditos.CurrentCell.RowIndex;
+                _ncredito = new Credito(_cliente.Creditos.ElementAt(index));
 
-                _cliente = _nclientes.GetCliente(_cliente.IdCliente);
-                dtvCreditos.DataSource = _cliente.Creditos;
+                if(_ncredito.DeleteCredito(_cliente.Creditos.ElementAt(index)))
+                {
+                    _cliente = _nclientes.GetCliente(_cliente.IdCliente);
+                    dtvCreditos.DataSource = _cliente.Creditos;
+                }
             }
         }
     }
