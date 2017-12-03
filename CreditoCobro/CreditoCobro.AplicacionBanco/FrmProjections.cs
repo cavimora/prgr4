@@ -79,11 +79,11 @@ namespace CreditoCobro.AplicacionBanco
         //metodo para exportar archivos excel
         public void ExportarExcel()
         {
-            SaveFileDialog oFD = new SaveFileDialog();      
+            SaveFileDialog oFD = new SaveFileDialog();
             oFD.Filter = "Excel|*.xlsx"; // Se define el tipo de dato a guardar 
             if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
             {
-                Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();   
+                Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
                 ExcelApp.Application.Workbooks.Add(Type.Missing);
                 ExcelApp.Columns.ColumnWidth = 20;
                 vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
@@ -103,16 +103,9 @@ namespace CreditoCobro.AplicacionBanco
                 ExcelApp.ActiveWorkbook.SaveCopyAs(oFD.FileName.ToString());
                 ExcelApp.ActiveWorkbook.Saved = true;
                 ExcelApp.Quit();
-            }            
+            }
         }
-
-        //
-        //Metodo para exportar XML
-        //
-     
-
-        
-
+    
         //metodo para exportar archivos texto plano 
 
         public void exportarTxt()
@@ -172,6 +165,21 @@ namespace CreditoCobro.AplicacionBanco
             {
                 vFileDialog = sFD.FileName;  //se le asigna un nombre
                 tXML.WriteXml(vFileDialog, XmlWriteMode.WriteSchema);
+            }
+        }
+
+        //metodo para importar xml
+        public void cargarXML()
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.Filter = "XML|*.xml";    // Se define el tipo de dato a cargar
+
+            if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
+            {
+                vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
+                DataTable rXML = new DataTable();
+                rXML.ReadXml(vFileDialog);
+                dtvProyeccion.DataSource = rXML;
             }
         }
         #endregion
