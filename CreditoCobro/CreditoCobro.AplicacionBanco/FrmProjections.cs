@@ -46,8 +46,7 @@ namespace CreditoCobro.AplicacionBanco
             dtvClientes.DataSource = _clientes;
         }
         private void btnNewProjection_Click(object sender, EventArgs e)
-        {
-            
+        { 
             try
             {
                 
@@ -55,7 +54,7 @@ namespace CreditoCobro.AplicacionBanco
                 _ncredito = new Credito(_cDetallado.Creditos.ElementAt(index));
                 dtvProyeccion.DataSource = null;
                 dtvProyeccion.DataSource = _ncredito.GetProyeccion();
-                tXML = llenarXML();
+                tXML = llenarXML(dtvProyeccion);
             }
             catch (Exception ex)
             {
@@ -134,7 +133,7 @@ namespace CreditoCobro.AplicacionBanco
                 sWriter.Close();
             }
         }
-        public System.Data.DataTable llenarXML()
+        public System.Data.DataTable llenarXML(DataGridView gDT)
         {
             System.Data.DataTable tCliente = new System.Data.DataTable();
             tCliente.TableName = "Empleado";
@@ -142,7 +141,7 @@ namespace CreditoCobro.AplicacionBanco
             tCliente.Columns.Add("Nombre");
             tCliente.Columns.Add("Apellido 1");
             tCliente.Columns.Add("Apellido 2");
-            tCliente.Columns.Add("Proyeccion", typeof (System.Data.DataTable));
+            tCliente.Columns.Add("Creditos", typeof (System.Data.DataTable));
             DataRow rowCliente = tCliente.NewRow();
 
             rowCliente["Cedula"] = _cDetallado.IdCliente;
@@ -150,44 +149,44 @@ namespace CreditoCobro.AplicacionBanco
             rowCliente["Apellido 1"] = _cDetallado.Apellido1;
             rowCliente["Apellido 2"] = _cDetallado.Apellido2;
 
-
-            
-
-
-
-
             System.Data.DataTable tCreditos = new System.Data.DataTable();
             tCreditos.TableName = "CreditoInfo";
             tCreditos.Columns.Add("Monto");
             tCreditos.Columns.Add("Plazo");
             tCreditos.Columns.Add("Tasa");
-            
+            tCreditos.Columns.Add("Proyeccion", typeof(System.Data.DataTable));
 
-            foreach(var cred in _cDetallado.Creditos)
+            System.Data.DataTable tProyecciones = new System.Data.DataTable();
+
+            tProyecciones.TableName = "InfoProyeccion";
+            tProyecciones.Columns.Add("Cuota");
+            tProyecciones.Columns.Add("Principal");
+            tProyecciones.Columns.Add("Intereses");
+            tProyecciones.Columns.Add("Saldo");
+            tProyecciones.Columns.Add("isPago");
+            foreach (var cred in _cDetallado.Creditos)
             {
                 DataRow row = tCreditos.NewRow();
                 row["Monto"] = cred.Monto;
                 row["Plazo"] = cred.Plazo;
                 row["Tasa"] = cred.Tasa;
+               
+                DataRow row2 = tProyecciones.NewRow();
+                foreach (DataGridViewRow dgv in gDT.Rows)
+                {
+                    row2["Cuota"] = dgv.Cells[0].Value.ToString();
+                    row2["Principal"] = dgv.Cells[1].Value.ToString();
+                    row2["Intereses"] = dgv.Cells[2].Value.ToString();
+                    row2["Saldo"] = dgv.Cells[3].Value.ToString();
+                    row2["Pago"] = dgv.Cells[4].Value.ToString();
+                    tProyecciones.Rows.Add(row2);
+                }
+                row["Proyeccion"] = row2;
                 tCreditos.Rows.Add(row);
-            }
-
-            rowCliente["Proyeccion"] = tCreditos;
+            }            
+            rowCliente["Creditos"] = tCreditos;
+            rowCliente["infoProyeccion"] = tProyecciones;
             tCliente.Rows.Add(rowCliente);
-            //foreach (DataGridViewRow dgv in pDTG.Rows)
-            //{
-            //    DataRow row = tResultado.NewRow();
-
-            //    row["Cuota"] = dgv.Cells[0].Value.ToString();
-            //    row["Principal"] = dgv.Cells[1].Value.ToString();
-            //    row["Intereses"] = dgv.Cells[2].Value.ToString();
-            //    row["Saldo"] = dgv.Cells[3].Value.ToString();
-            //    row["Pago"] = dgv.Cells[4].Value.ToString();
-
-            //    tResultado.Rows.Add(row);
-
-            //}
-
             return tCliente;
         }
         //metodo para generar archivo XML
