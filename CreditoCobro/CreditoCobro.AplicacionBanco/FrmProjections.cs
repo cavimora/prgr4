@@ -12,6 +12,7 @@ using CreditoCobro.DTO;
 using System.IO;
 using System.Text.RegularExpressions;
 using Microsoft.Office.Interop.Excel;
+using System.Data.OleDb;
 
 
 namespace CreditoCobro.AplicacionBanco
@@ -24,7 +25,9 @@ namespace CreditoCobro.AplicacionBanco
         private List<DtoCliente> _clientes;
         string vFileDialog;
         public System.Data.DataTable tXML;
-
+        OleDbConnection oleDbConnection;
+        OleDbDataAdapter oleDbDataAdapter;
+        System.Data.DataTable tExcel;
 
         public FrmProjections()
         {
@@ -194,7 +197,7 @@ namespace CreditoCobro.AplicacionBanco
             if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
             {
                 vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
-                lecturaArchivo(dtvProyeccion, caracter, vFileDialog);
+                dtvProyeccion.DataSource = lecturaArchivo(dtvProyeccion, caracter, vFileDialog);
             }
         }
 
@@ -215,11 +218,12 @@ namespace CreditoCobro.AplicacionBanco
         }
 
         //metodo para leer el txt
-        public void lecturaArchivo(DataGridView tabla, char caracter, string ruta)
+        public DataGridView lecturaArchivo(DataGridView tabla, char caracter, string ruta)
         {
             StreamReader sReader = new StreamReader(ruta);
             int fila = 0;
             string Linea = "";
+            DataGridView dtvResultado = tabla;
             //tabla.Rows.Clear();
 
             do
@@ -229,13 +233,13 @@ namespace CreditoCobro.AplicacionBanco
                 {
                     if (fila == 0)
                     {
-                        dtvProyeccion.ColumnCount = Linea.Split(caracter).Length;
-                        nombrarTitulos(tabla, Linea.Split(caracter));
+                        dtvResultado.ColumnCount = Linea.Split(caracter).Length;
+                        nombrarTitulos(dtvResultado, Linea.Split(caracter));
                         fila += 1;
                     }
                     else
                     {
-                        agregarFila(tabla, Linea, caracter, fila);
+                        agregarFila(dtvResultado, Linea, caracter, fila);
                         fila += 1;
                     }
                 }
@@ -244,8 +248,40 @@ namespace CreditoCobro.AplicacionBanco
             {
                 sReader.Close();
             }
+
+            return dtvResultado;
         }
 
+        //metodo para importar Excel
+        public DataGridView llenarGridView()
+        {
+            DataGridView dtvResultado = new DataGridView();
+            try
+            {
+                OpenFileDialog oFD = new OpenFileDialog();
+                oFD.Filter = "EXCEL| *.xlsx"; //se define el formato de importacion
+                if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
+                {
+                    vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
+                    oleDbConnection = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; data source = " + vFileDialog + "; Extended Properties = 'Excel 12.0 Xml;HDR=Yes'");
+                    oleDbDataAdapter = new OleDbDataAdapter("Select * From [Hoja1$]", oleDbConnection);
+                    tExcel = new DataTable();
+                    oleDbDataAdapter.Fill(tExcel);
+                    dtvResultado.DataSource = tExcel;
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Algo salio Mal :( ", "Alerta", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+            }
+            return dtvResultado;
+        }
+
+        //Metodo para cargar los datos en el dtvproyeccion
+        public void ImportarExcel()
+        {
+            dtvProyeccion.DataSource = llenarGridView();
+        }
 
         #endregion
 
@@ -284,6 +320,8 @@ namespace CreditoCobro.AplicacionBanco
             dtvCreditos.DataSource = null;
             dtvProyeccion.DataSource = null;
         }
-    }    
+
+        
+    }   
 
 }
