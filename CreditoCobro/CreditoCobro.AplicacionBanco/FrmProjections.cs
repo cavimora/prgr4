@@ -176,12 +176,76 @@ namespace CreditoCobro.AplicacionBanco
 
             if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
             {
+                dtvProyeccion.Rows.Clear();
                 vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
                 System.Data.DataTable rXML = new System.Data.DataTable();
                 rXML.ReadXml(vFileDialog);
                 dtvProyeccion.DataSource = rXML;
             }
         }
+
+        public void cargarTxt()
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.Filter = "TEXTO PLANO|*.txt";    // Se define el tipo de dato a cargar            
+            char caracter = '|';
+
+            if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
+            {
+                vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
+                lecturaArchivo(dtvClientes, caracter, vFileDialog);
+            }
+        }
+
+        //Metodo para cargar los titulos del datagridview
+        public static void nombrarTitulos(DataGridView tabla, string[] titulos)
+        {
+            for (int i = 0; i <= tabla.ColumnCount - 1; i++)
+            {
+                tabla.Columns[i].HeaderText = titulos[i];
+            }
+        }
+
+        //metodo para agregar las filas al datagridview
+        public static void agregarFila(DataGridView tabla, string Linea, char caracter, int fila)
+        {
+            string[] aFilas = Linea.Split(caracter);
+            tabla.Rows.Add(aFilas);
+        }
+
+        //metodo para leer el txt
+        public void lecturaArchivo(DataGridView tabla, char caracter, string ruta)
+        {
+            StreamReader sReader = new StreamReader(ruta);
+            int fila = 0;
+            string Linea = "";
+            tabla.Rows.Clear();
+
+            do
+            {
+                Linea = sReader.ReadLine();
+                if ((Linea != null))
+                {
+                    if (fila == 0)
+                    {
+                        dtvProyeccion.ColumnCount = Linea.Split(caracter).Length;
+                        nombrarTitulos(dtvProyeccion, Linea.Split(caracter));
+                        fila += 1;
+                    }
+                    else
+                    {
+                        agregarFila(dtvClientes, Linea, caracter, fila);
+                        fila += 1;
+                    }
+                }
+            }
+            while (!(Linea == null));
+            {
+                sReader.Close();
+            }
+        }
+
+
         #endregion
 
         private void documentoExcelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -204,5 +268,7 @@ namespace CreditoCobro.AplicacionBanco
         {
             cargarXML();
         }
-    }
+
+    }    
+
 }
