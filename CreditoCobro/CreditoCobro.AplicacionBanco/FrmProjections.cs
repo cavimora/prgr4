@@ -137,7 +137,6 @@ namespace CreditoCobro.AplicacionBanco
                 sWriter.Close();
             }
         }
-
         public System.Data.DataTable llenarXML(DataGridView pDTG)
         {
             System.Data.DataTable tResultado = new System.Data.DataTable();
