@@ -13,6 +13,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using Microsoft.Office.Interop.Excel;
 
+
 namespace CreditoCobro.AplicacionBanco
 {
 
@@ -22,7 +23,9 @@ namespace CreditoCobro.AplicacionBanco
         private Credito _ncredito;
         private List<DtoCliente> _clientes;
         string vFileDialog;
-        public DataTable tXML;
+        public System.Data.DataTable tXML;
+        
+
         public FrmProjections()
         {
             InitializeComponent();
@@ -106,10 +109,7 @@ namespace CreditoCobro.AplicacionBanco
         //
         //Metodo para exportar XML
         //
-        public void ExportarXML()
-        {
-
-        }
+     
 
         
 
@@ -137,45 +137,32 @@ namespace CreditoCobro.AplicacionBanco
                 sWriter.Close();
             }
         }
-#endregion
 
-private void documentoExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        public System.Data.DataTable llenarXML(DataGridView pDTG)
         {
-            ExportarExcel();
-        }
-
-        private void textoPlanoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            exportarTxt();
-        }
-
-        private void documentoXMLToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-        public DataTable llenarXML(DataGridView pDTG)
-        {
-            DataTable tResultado = new DataTable();
+            System.Data.DataTable tResultado = new System.Data.DataTable();
+            tResultado.TableName = "aXML";
             tResultado.Columns.Add("Cuota");
             tResultado.Columns.Add("Principal");
             tResultado.Columns.Add("Intereses");
             tResultado.Columns.Add("Saldo");
             tResultado.Columns.Add("Pago");
+
             foreach (DataGridViewRow dgv in pDTG.Rows)
-            {               
+            {
                 DataRow row = tResultado.NewRow();
 
-                row["Cuota"] = dgv.Cells[1];
-                row["Principal"] = dgv.Cells[2];
-                row["Intereses"] = dgv.Cells[3];
-                row["Saldo"] = dgv.Cells[4];
-                row["Pago"] = dgv.Cells[5];
+                row["Cuota"] = dgv.Cells[0].Value.ToString();
+                row["Principal"] = dgv.Cells[1].Value.ToString();
+                row["Intereses"] = dgv.Cells[2].Value.ToString();
+                row["Saldo"] = dgv.Cells[3].Value.ToString();
+                row["Pago"] = dgv.Cells[4].Value.ToString();
 
                 tResultado.Rows.Add(row);
 
             }
 
-                return tResultado;
+            return tResultado;
         }
         //metodo para generar archivo XML
         public void exportarXML()
@@ -188,6 +175,24 @@ private void documentoExcelToolStripMenuItem_Click(object sender, EventArgs e)
                 tXML.WriteXml(vFileDialog, XmlWriteMode.WriteSchema);
             }
         }
+        #endregion
+
+        private void documentoExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarExcel();
+        }
+
+        private void textoPlanoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            exportarTxt();
+        }
+
+        private void documentoXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            exportarXML();
+        }
+
+       
     }
 
   
