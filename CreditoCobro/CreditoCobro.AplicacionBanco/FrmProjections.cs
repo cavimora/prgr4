@@ -222,10 +222,8 @@ namespace CreditoCobro.AplicacionBanco
         {
             StreamReader sReader = new StreamReader(ruta);
             int fila = 0;
-            string Linea = "";
-            
+            string Linea = ""; 
             //tabla.Rows.Clear();
-
             do
             {
                 Linea = sReader.ReadLine();
