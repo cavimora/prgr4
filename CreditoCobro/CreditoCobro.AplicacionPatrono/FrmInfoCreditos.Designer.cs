@@ -63,6 +63,7 @@
             this.metroButton1.TabIndex = 32;
             this.metroButton1.Text = "Limpiar Datos";
             this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // lbProjections
             // 
@@ -90,6 +91,7 @@
             this.btnNewProjection.TabIndex = 28;
             this.btnNewProjection.Text = "Generar Proyección";
             this.btnNewProjection.UseSelectable = true;
+            this.btnNewProjection.Click += new System.EventHandler(this.btnNewProjection_Click);
             // 
             // dtvProyeccion
             // 
@@ -342,7 +344,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 698);
+            this.ClientSize = new System.Drawing.Size(930, 779);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);

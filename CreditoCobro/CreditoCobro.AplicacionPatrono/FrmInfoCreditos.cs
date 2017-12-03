@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.IO;
+using CreditoCobro.DTO;
+using Microsoft.VisualBasic;
 
 namespace CreditoCobro.AplicacionPatrono
 {
@@ -33,12 +35,39 @@ namespace CreditoCobro.AplicacionPatrono
 
         //metodo para exportar archivos texto plano 
 
-        
-        
+
+
         //metodo para generar archivo XML
-       
+
 
         //metodo para importar xml
+        private int _decimalPoints = 2;
+        private List<DtoProyeccion> _proyeccion;
+        public List<DtoProyeccion> GetProyeccion(double Tasa, double Monto, int Plazo)
+        {
+            double cuota = Math.Round((Financial.Pmt(Tasa / 100, Plazo, -Monto)), _decimalPoints, MidpointRounding.AwayFromZero);//*100)/100;
+            double saldo = Monto;
+            _proyeccion = new List<DtoProyeccion>();
+            //int i = 1;
+            //while(saldo > 0)
+            for (int i = 0; i < Plazo; i++)
+            {
+                var intereses = Math.Round((saldo * (Tasa / 100)), _decimalPoints, MidpointRounding.AwayFromZero);//*100)/100;
+                var principal = Math.Round((cuota - intereses), _decimalPoints, MidpointRounding.AwayFromZero);//*100)/100;
+                saldo = Math.Round((saldo - principal), _decimalPoints, MidpointRounding.AwayFromZero);//*100)/100;
+                //saldo = saldo < 0 ? Math.Round(saldo) : saldo;
+                _proyeccion.Add(new DtoProyeccion()
+                {
+                    Cuota = i + 1,
+                    Intereses = intereses,
+                    Principal = principal,
+                    Saldo = saldo
+                });
+            }
+
+            return _proyeccion;
+        }
+        private System.Data.DataTable _creditos;
         public void cargarXML()
         {
             OpenFileDialog oFD = new OpenFileDialog();
@@ -55,8 +84,8 @@ namespace CreditoCobro.AplicacionPatrono
                 txtNom.Text = rXML.Rows[0]["Nombre"].ToString();
                 txtApe1.Text = rXML.Rows[0]["Apellido 1"].ToString();
                 txtApe2.Text = rXML.Rows[0]["Apellido 2"].ToString();
-
-                dtvCreditos.DataSource = ((System.Data.DataTable)rXML.Rows[0]["Proyeccion"]);
+                _creditos = ((System.Data.DataTable)rXML.Rows[0]["Proyeccion"]);
+                dtvCreditos.DataSource = _creditos;
             }
         }
 
@@ -144,6 +173,25 @@ namespace CreditoCobro.AplicacionPatrono
         private void importarDesdeXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cargarXML();
+        }
+
+        private void btnNewProjection_Click(object sender, EventArgs e)
+        {
+            var index=dtvCreditos.CurrentCell.RowIndex;
+            var monto= double.Parse((_creditos.Rows[index]["Monto"]).ToString());
+            var tasa = double.Parse((_creditos.Rows[index]["Tasa"]).ToString());
+            var plazo = int.Parse((_creditos.Rows[index]["Plazo"]).ToString());
+            dtvProyeccion.DataSource = GetProyeccion(tasa, monto, plazo);
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            txtNom.Text = "";
+            txtCed.Text = "";
+            txtApe1.Text = "";
+            txtApe2.Text = "";
+            dtvCreditos.DataSource = null;
+            dtvProyeccion.DataSource = null;
         }
     }
 }
