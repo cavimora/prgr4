@@ -45,6 +45,8 @@ namespace CreditoCobro.AplicacionBanco
             dtvClientes.DataSource = null;
             dtvClientes.DataSource = _clientes;
         }
+
+        private List<DtoProyeccion> _proyeccion;
         private void btnNewProjection_Click(object sender, EventArgs e)
         { 
             try
@@ -53,7 +55,8 @@ namespace CreditoCobro.AplicacionBanco
                 var index = dtvCreditos.CurrentCell.RowIndex;
                 _ncredito = new Credito(_cDetallado.Creditos.ElementAt(index));
                 dtvProyeccion.DataSource = null;
-                dtvProyeccion.DataSource = _ncredito.GetProyeccion();
+                _proyeccion =_ncredito.GetProyeccion();
+                dtvProyeccion.DataSource = _proyeccion;
                 tXML = llenarXML(dtvProyeccion);
             }
             catch (Exception ex)
@@ -170,22 +173,22 @@ namespace CreditoCobro.AplicacionBanco
                 row["Monto"] = cred.Monto;
                 row["Plazo"] = cred.Plazo;
                 row["Tasa"] = cred.Tasa;
-               
-                DataRow row2 = tProyecciones.NewRow();
-                foreach (DataGridViewRow dgv in gDT.Rows)
+
+                DataRow row2 = null;
+                foreach (DtoProyeccion dgv in _proyeccion)
                 {
-                    row2["Cuota"] = dgv.Cells[0].Value.ToString();
-                    row2["Principal"] = dgv.Cells[1].Value.ToString();
-                    row2["Intereses"] = dgv.Cells[2].Value.ToString();
-                    row2["Saldo"] = dgv.Cells[3].Value.ToString();
-                    row2["Pago"] = dgv.Cells[4].Value.ToString();
+                    row2 = tProyecciones.NewRow();
+                    row2["Cuota"] = dgv.Cuota;
+                    row2["Principal"] = dgv.Principal;
+                    row2["Intereses"] = dgv.Intereses;
+                    row2["Saldo"] = dgv.Saldo;
+                    row2["isPago"] = dgv.IsPago;
                     tProyecciones.Rows.Add(row2);
                 }
-                row["Proyeccion"] = row2;
+                row["Proyeccion"] = tProyecciones;
                 tCreditos.Rows.Add(row);
             }            
             rowCliente["Creditos"] = tCreditos;
-            rowCliente["infoProyeccion"] = tProyecciones;
             tCliente.Rows.Add(rowCliente);
             return tCliente;
         }
