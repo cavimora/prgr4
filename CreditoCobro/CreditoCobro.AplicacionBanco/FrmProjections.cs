@@ -22,6 +22,7 @@ namespace CreditoCobro.AplicacionBanco
         private Credito _ncredito;
         private List<DtoCliente> _clientes;
         string vFileDialog;
+        public DataTable tXML;
         public FrmProjections()
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace CreditoCobro.AplicacionBanco
                 _ncredito = new Credito(_cDetallado.Creditos.ElementAt(index));
                 dtvProyeccion.DataSource = null;
                 dtvProyeccion.DataSource = _ncredito.GetProyeccion();
+                tXML = llenarXML(dtvProyeccion);
             }
             catch (Exception ex)
             {
@@ -98,8 +100,18 @@ namespace CreditoCobro.AplicacionBanco
                 ExcelApp.ActiveWorkbook.SaveCopyAs(oFD.FileName.ToString());
                 ExcelApp.ActiveWorkbook.Saved = true;
                 ExcelApp.Quit();
-            }
+            }            
         }
+
+        //
+        //Metodo para exportar XML
+        //
+        public void ExportarXML()
+        {
+
+        }
+
+        
 
         //metodo para exportar archivos texto plano 
 
@@ -141,5 +153,42 @@ private void documentoExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
         }
+        public DataTable llenarXML(DataGridView pDTG)
+        {
+            DataTable tResultado = new DataTable();
+            tResultado.Columns.Add("Cuota");
+            tResultado.Columns.Add("Principal");
+            tResultado.Columns.Add("Intereses");
+            tResultado.Columns.Add("Saldo");
+            tResultado.Columns.Add("Pago");
+            foreach (DataGridViewRow dgv in pDTG.Rows)
+            {               
+                DataRow row = tResultado.NewRow();
+
+                row["Cuota"] = dgv.Cells[1];
+                row["Principal"] = dgv.Cells[2];
+                row["Intereses"] = dgv.Cells[3];
+                row["Saldo"] = dgv.Cells[4];
+                row["Pago"] = dgv.Cells[5];
+
+                tResultado.Rows.Add(row);
+
+            }
+
+                return tResultado;
+        }
+        //metodo para generar archivo XML
+        public void exportarXML()
+        {
+            SaveFileDialog sFD = new SaveFileDialog();
+            sFD.Filter = "XML|*.xml";     //se definen los tipos de datos
+            if (sFD.ShowDialog() == DialogResult.OK)
+            {
+                vFileDialog = sFD.FileName;  //se le asigna un nombre
+                tXML.WriteXml(vFileDialog, XmlWriteMode.WriteSchema);
+            }
+        }
     }
+
+  
 }
