@@ -197,7 +197,7 @@ namespace CreditoCobro.AplicacionBanco
             if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
             {
                 vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
-                dtvProyeccion.DataSource = lecturaArchivo(dtvProyeccion, caracter, vFileDialog);
+                lecturaArchivo(dtvProyeccion, caracter, vFileDialog);
             }
         }
 
@@ -218,12 +218,12 @@ namespace CreditoCobro.AplicacionBanco
         }
 
         //metodo para leer el txt
-        public DataGridView lecturaArchivo(DataGridView tabla, char caracter, string ruta)
+        public void lecturaArchivo(DataGridView tabla, char caracter, string ruta)
         {
             StreamReader sReader = new StreamReader(ruta);
             int fila = 0;
             string Linea = "";
-            DataGridView dtvResultado = tabla;
+            
             //tabla.Rows.Clear();
 
             do
@@ -233,13 +233,13 @@ namespace CreditoCobro.AplicacionBanco
                 {
                     if (fila == 0)
                     {
-                        dtvResultado.ColumnCount = Linea.Split(caracter).Length;
-                        nombrarTitulos(dtvResultado, Linea.Split(caracter));
+                        tabla.ColumnCount = Linea.Split(caracter).Length;
+                        nombrarTitulos(tabla, Linea.Split(caracter));
                         fila += 1;
                     }
                     else
                     {
-                        agregarFila(dtvResultado, Linea, caracter, fila);
+                        agregarFila(tabla, Linea, caracter, fila);
                         fila += 1;
                     }
                 }
@@ -248,40 +248,26 @@ namespace CreditoCobro.AplicacionBanco
             {
                 sReader.Close();
             }
-
-            return dtvResultado;
         }
-
+        
         //metodo para importar Excel
-        public DataGridView llenarGridView()
+        public void cargarExcel()
         {
-            DataGridView dtvResultado = new DataGridView();
-            try
-            {
                 OpenFileDialog oFD = new OpenFileDialog();
                 oFD.Filter = "EXCEL| *.xlsx"; //se define el formato de importacion
                 if (oFD.ShowDialog() == DialogResult.OK)  //si se selecciona OK
                 {
                     vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
-                    oleDbConnection = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; data source = " + vFileDialog + "; Extended Properties = 'Excel 12.0 Xml;HDR=Yes'");
+                    oleDbConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;data source =" + vFileDialog + ";Extended Properties = 'Excel 12.0 Xml;HDR=Yes'");
                     oleDbDataAdapter = new OleDbDataAdapter("Select * From [Hoja1$]", oleDbConnection);
-                    tExcel = new DataTable();
+                    tExcel = new System.Data.DataTable();
                     oleDbDataAdapter.Fill(tExcel);
-                    dtvResultado.DataSource = tExcel;
+                    dtvProyeccion.DataSource = tExcel;
                 }
-            }
-            catch (Exception ex)
-            {
-                MetroFramework.MetroMessageBox.Show(this, "Algo salio Mal :( ", "Alerta", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-            }
-            return dtvResultado;
+            
         }
 
-        //Metodo para cargar los datos en el dtvproyeccion
-        public void ImportarExcel()
-        {
-            dtvProyeccion.DataSource = llenarGridView();
-        }
+        
 
         #endregion
 
@@ -321,7 +307,10 @@ namespace CreditoCobro.AplicacionBanco
             dtvProyeccion.DataSource = null;
         }
 
-        
+        private void importarDesdeEXCELToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cargarExcel();
+        }
     }   
 
 }
