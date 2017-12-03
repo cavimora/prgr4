@@ -70,6 +70,7 @@ namespace CreditoCobro.NegocioBanco
                                          where creds.IdCliente == idCliente
                                          select new DtoCredito
                                          {
+                                             Id = creds.IdCredito,
                                              Monto = (double)creds.MontoAprobado,
                                              Plazo = (int)creds.Plazo,
                                              Tasa = (double)creds.Tasa

@@ -5,5 +5,6 @@
         public double Monto { get; set; }
         public double Tasa { get; set; }
         public int Plazo { get; set; }
+        public int Id { get; set; }
     }
 }

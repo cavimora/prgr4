@@ -20,8 +20,6 @@ namespace CreditoCobro.NegocioBanco
         {
             _decimalPoints = 2;
             _credito = credito;
-
-
         }
 
         public List<DtoProyeccion> GetProyeccion()
@@ -49,6 +47,30 @@ namespace CreditoCobro.NegocioBanco
             return _proyeccion;
         }
 
+
+        public bool AddCredito(DtoCredito credito, DtoCliente cliente)
+        {
+            try
+            {
+                using (_db = new Entities())
+                {
+                    B_Credito nuevoCredito = new B_Credito()
+                    {
+                        IdCliente = cliente.IdCliente,
+                        MontoAprobado = (decimal)credito.Monto,
+                        Plazo = credito.Plazo,
+                        Tasa = (decimal)credito.Tasa
+                    };
+                    _db.B_Credito.Add(nuevoCredito);
+                    if (_db.SaveChanges() <= 0) throw new Exception("Hubo un problema a la hora de ingresar el cliente, por favor intente de nuevo.");
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         //private void CargarInfoCredito()
         //{
