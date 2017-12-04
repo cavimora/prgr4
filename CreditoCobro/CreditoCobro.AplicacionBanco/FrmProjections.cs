@@ -211,7 +211,7 @@ namespace CreditoCobro.AplicacionBanco
             {
                 vFileDialog = sFD.FileName;  //se le asigna un nombre 
                 tXML.WriteXml(vFileDialog, XmlWriteMode.WriteSchema);
-                llenarXML();
+                //llenarXML();
             }
         }
 
@@ -365,6 +365,8 @@ namespace CreditoCobro.AplicacionBanco
                 btnNewProjection.Enabled = false;
             }
         }
+
+       
     }   
 
 }
