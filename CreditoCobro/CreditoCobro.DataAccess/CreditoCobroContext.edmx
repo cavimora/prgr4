@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="IdCredito" />
           </Key>
-          <Property Name="IdCredito" Type="int" Nullable="false" />
+          <Property Name="IdCredito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdCliente" Type="varchar" MaxLength="9" />
           <Property Name="MontoAprobado" Type="decimal" Precision="18" Scale="4" />
           <Property Name="Tasa" Type="decimal" Precision="18" Scale="4" />
@@ -78,7 +78,17 @@
           <Property Name="Apellido1" Type="varchar" MaxLength="18" />
           <Property Name="Apellido2" Type="varchar" MaxLength="18" />
         </EntityType>
-        <Association Name="FK__B_Cliente__IdIns__4E88ABD4">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__B_Cliente__IdIns__10566F31">
           <End Role="B_Institucion" Type="Self.B_Institucion" Multiplicity="0..1" />
           <End Role="B_Cliente" Type="Self.B_Cliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -90,7 +100,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__B_Credito__IdCli__5165187F">
+        <Association Name="FK__B_Credito__IdCli__1332DBDC">
           <End Role="B_Cliente" Type="Self.B_Cliente" Multiplicity="0..1" />
           <End Role="B_Credito" Type="Self.B_Credito" Multiplicity="*" />
           <ReferentialConstraint>
@@ -102,7 +112,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__B_Proyecc__IdCre__5441852A">
+        <Association Name="FK__B_Proyecc__IdCre__160F4887">
           <End Role="B_Credito" Type="Self.B_Credito" Multiplicity="1" />
           <End Role="B_Proyeccion" Type="Self.B_Proyeccion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -114,7 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__P_Cuota__IdEmple__5CD6CB2B">
+        <Association Name="FK__P_Cuota__IdEmple__1AD3FDA4">
           <End Role="P_Empleado" Type="Self.P_Empleado" Multiplicity="1" />
           <End Role="P_Cuota" Type="Self.P_Cuota" Multiplicity="*" />
           <ReferentialConstraint>
@@ -134,19 +144,20 @@
           <EntitySet Name="G_Usuarios" EntityType="Self.G_Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="P_Cuota" EntityType="Self.P_Cuota" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="P_Empleado" EntityType="Self.P_Empleado" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__B_Cliente__IdIns__4E88ABD4" Association="Self.FK__B_Cliente__IdIns__4E88ABD4">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__B_Cliente__IdIns__10566F31" Association="Self.FK__B_Cliente__IdIns__10566F31">
             <End Role="B_Institucion" EntitySet="B_Institucion" />
             <End Role="B_Cliente" EntitySet="B_Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__B_Credito__IdCli__5165187F" Association="Self.FK__B_Credito__IdCli__5165187F">
+          <AssociationSet Name="FK__B_Credito__IdCli__1332DBDC" Association="Self.FK__B_Credito__IdCli__1332DBDC">
             <End Role="B_Cliente" EntitySet="B_Cliente" />
             <End Role="B_Credito" EntitySet="B_Credito" />
           </AssociationSet>
-          <AssociationSet Name="FK__B_Proyecc__IdCre__5441852A" Association="Self.FK__B_Proyecc__IdCre__5441852A">
+          <AssociationSet Name="FK__B_Proyecc__IdCre__160F4887" Association="Self.FK__B_Proyecc__IdCre__160F4887">
             <End Role="B_Credito" EntitySet="B_Credito" />
             <End Role="B_Proyeccion" EntitySet="B_Proyeccion" />
           </AssociationSet>
-          <AssociationSet Name="FK__P_Cuota__IdEmple__5CD6CB2B" Association="Self.FK__P_Cuota__IdEmple__5CD6CB2B">
+          <AssociationSet Name="FK__P_Cuota__IdEmple__1AD3FDA4" Association="Self.FK__P_Cuota__IdEmple__1AD3FDA4">
             <End Role="P_Empleado" EntitySet="P_Empleado" />
             <End Role="P_Cuota" EntitySet="P_Cuota" />
           </AssociationSet>
@@ -301,6 +312,7 @@
             <End Role="P_Cuota" EntitySet="P_Cuota" />
           </AssociationSet>
           <EntitySet Name="G_Usuarios" EntityType="creditocobroModel.G_Usuarios" />
+          <EntitySet Name="sysdiagrams" EntityType="creditocobroModel.sysdiagrams" />
         </EntityContainer>
         <EntityType Name="G_Usuarios">
           <Key>
@@ -308,6 +320,16 @@
           </Key>
           <Property Name="usuario" Type="String" Nullable="false" MaxLength="28" FixedLength="true" Unicode="true" />
           <Property Name="contrasena" Type="String" Nullable="false" MaxLength="128" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -389,6 +411,17 @@
               <MappingFragment StoreEntitySet="G_Usuarios">
                 <ScalarProperty Name="contrasena" ColumnName="contrasena" />
                 <ScalarProperty Name="usuario" ColumnName="usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="creditocobroModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

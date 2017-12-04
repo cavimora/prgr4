@@ -32,5 +32,6 @@ namespace CreditoCobro.Datos
         public DbSet<P_Cuota> P_Cuota { get; set; }
         public DbSet<P_Empleado> P_Empleado { get; set; }
         public DbSet<G_Usuarios> G_Usuarios { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
