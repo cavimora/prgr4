@@ -43,7 +43,7 @@ namespace CreditoCobro.AplicacionBanco
                 txtNom.Text = rXML.Rows[0]["Nombre"].ToString();
                 txtApe1.Text = rXML.Rows[0]["Apellido 1"].ToString();
                 txtApe2.Text = rXML.Rows[0]["Apellido 2"].ToString();
-                _creditos = ((System.Data.DataTable)rXML.Rows[0]["Proyeccion"]);
+                _creditos = ((System.Data.DataTable)rXML.Rows[0]["Creditos"]);
                 dtvCreditos.DataSource = _creditos;
             }
         }
