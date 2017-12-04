@@ -59,6 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAplicacionPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAplicacionPagos.Designer.cs">
+      <DependentUpon>FrmAplicacionPagos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmClients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAplicacionPagos.resx">
+      <DependentUpon>FrmAplicacionPagos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmClients.resx">
       <DependentUpon>FrmClients.cs</DependentUpon>
     </EmbeddedResource>

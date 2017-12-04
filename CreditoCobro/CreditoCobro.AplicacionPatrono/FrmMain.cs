@@ -95,5 +95,10 @@ namespace CreditoCobro.AplicacionPatrono
                 projections.Focus();
             }
         }
+
+        private void BtnPays_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.plnTop = new System.Windows.Forms.Panel();
+            this.BtnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.plnMenu = new System.Windows.Forms.Panel();
-            this.BtnMore = new System.Windows.Forms.Button();
-            this.rec1 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnNewClient = new System.Windows.Forms.Button();
+            this.BtnMore = new System.Windows.Forms.Button();
             this.BtnPays = new System.Windows.Forms.Button();
+            this.rec1 = new System.Windows.Forms.Panel();
             this.btnProyections = new System.Windows.Forms.Button();
-            this.BtnMinimize = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.plnTop.SuspendLayout();
             this.plnMenu.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +60,22 @@
             this.plnTop.Name = "plnTop";
             this.plnTop.Size = new System.Drawing.Size(1048, 35);
             this.plnTop.TabIndex = 6;
+            // 
+            // BtnMinimize
+            // 
+            this.BtnMinimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnMinimize.FlatAppearance.BorderSize = 0;
+            this.BtnMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.BtnMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.BtnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMinimize.Image = global::CreditoCobro.AplicacionPatrono.Properties.Resources.minus_symbol;
+            this.BtnMinimize.Location = new System.Drawing.Point(974, 0);
+            this.BtnMinimize.Name = "BtnMinimize";
+            this.BtnMinimize.Size = new System.Drawing.Size(22, 35);
+            this.BtnMinimize.TabIndex = 9;
+            this.BtnMinimize.UseVisualStyleBackColor = true;
+            this.BtnMinimize.Click += new System.EventHandler(this.BtnMinimize_Click);
             // 
             // btnMaximize
             // 
@@ -127,36 +143,6 @@
             this.plnMenu.Size = new System.Drawing.Size(55, 624);
             this.plnMenu.TabIndex = 7;
             // 
-            // BtnMore
-            // 
-            this.BtnMore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnMore.FlatAppearance.BorderSize = 0;
-            this.BtnMore.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.BtnMore.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.BtnMore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnMore.Location = new System.Drawing.Point(10, 8);
-            this.BtnMore.Name = "BtnMore";
-            this.BtnMore.Size = new System.Drawing.Size(33, 33);
-            this.BtnMore.TabIndex = 13;
-            this.BtnMore.UseVisualStyleBackColor = true;
-            // 
-            // rec1
-            // 
-            this.rec1.BackColor = System.Drawing.Color.White;
-            this.rec1.Location = new System.Drawing.Point(7, 104);
-            this.rec1.Name = "rec1";
-            this.rec1.Size = new System.Drawing.Size(188, 1);
-            this.rec1.TabIndex = 8;
-            this.rec1.Visible = false;
-            // 
-            // panel9
-            // 
-            this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel9.Location = new System.Drawing.Point(74, 18);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(68, 71);
-            this.panel9.TabIndex = 8;
-            // 
             // button1
             // 
             this.button1.BackgroundImage = global::CreditoCobro.AplicacionPatrono.Properties.Resources.menu2;
@@ -191,6 +177,19 @@
             this.btnNewClient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNewClient.UseVisualStyleBackColor = true;
             // 
+            // BtnMore
+            // 
+            this.BtnMore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnMore.FlatAppearance.BorderSize = 0;
+            this.BtnMore.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.BtnMore.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.BtnMore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMore.Location = new System.Drawing.Point(10, 8);
+            this.BtnMore.Name = "BtnMore";
+            this.BtnMore.Size = new System.Drawing.Size(33, 33);
+            this.BtnMore.TabIndex = 13;
+            this.BtnMore.UseVisualStyleBackColor = true;
+            // 
             // BtnPays
             // 
             this.BtnPays.BackgroundImage = global::CreditoCobro.AplicacionPatrono.Properties.Resources.point_of_service;
@@ -209,6 +208,16 @@
             this.BtnPays.Text = "&Aplicación de Pagos";
             this.BtnPays.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnPays.UseVisualStyleBackColor = true;
+            this.BtnPays.Click += new System.EventHandler(this.BtnPays_Click);
+            // 
+            // rec1
+            // 
+            this.rec1.BackColor = System.Drawing.Color.White;
+            this.rec1.Location = new System.Drawing.Point(7, 104);
+            this.rec1.Name = "rec1";
+            this.rec1.Size = new System.Drawing.Size(188, 1);
+            this.rec1.TabIndex = 8;
+            this.rec1.Visible = false;
             // 
             // btnProyections
             // 
@@ -230,21 +239,13 @@
             this.btnProyections.UseVisualStyleBackColor = true;
             this.btnProyections.Click += new System.EventHandler(this.btnProyections_Click);
             // 
-            // BtnMinimize
+            // panel9
             // 
-            this.BtnMinimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnMinimize.FlatAppearance.BorderSize = 0;
-            this.BtnMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.BtnMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.BtnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnMinimize.Image = global::CreditoCobro.AplicacionPatrono.Properties.Resources.minus_symbol;
-            this.BtnMinimize.Location = new System.Drawing.Point(974, 0);
-            this.BtnMinimize.Name = "BtnMinimize";
-            this.BtnMinimize.Size = new System.Drawing.Size(22, 35);
-            this.BtnMinimize.TabIndex = 9;
-            this.BtnMinimize.UseVisualStyleBackColor = true;
-            this.BtnMinimize.Click += new System.EventHandler(this.BtnMinimize_Click);
+            this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel9.Location = new System.Drawing.Point(74, 18);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(68, 71);
+            this.panel9.TabIndex = 8;
             // 
             // FrmMain
             // 

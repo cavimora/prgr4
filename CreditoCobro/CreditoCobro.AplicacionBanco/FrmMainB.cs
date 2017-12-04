@@ -126,10 +126,22 @@ namespace CreditoCobro.AplicacionBanco
                 clientes.Focus();
             }
         }
-
+        FrmAplicacionPagos pagos;
         private void BtnPays_Click(object sender, EventArgs e)
         {
-
+            if(pagos == null)
+            {
+                pagos = new FrmAplicacionPagos();
+                pagos.FormClosing += CerrarPagos;
+                pagos.Show();
+            }else
+            {
+                pagos.Focus();
+            }
+        }
+        private void CerrarPagos(object sender, CancelEventArgs e)
+        {
+            pagos = null;
         }
     }
 }
