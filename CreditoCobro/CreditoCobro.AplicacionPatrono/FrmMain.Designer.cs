@@ -36,9 +36,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.plnMenu = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnNewClient = new System.Windows.Forms.Button();
             this.BtnMore = new System.Windows.Forms.Button();
-            this.BtnPays = new System.Windows.Forms.Button();
             this.rec1 = new System.Windows.Forms.Panel();
             this.btnProyections = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -131,9 +129,7 @@
             // 
             this.plnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.plnMenu.Controls.Add(this.button1);
-            this.plnMenu.Controls.Add(this.btnNewClient);
             this.plnMenu.Controls.Add(this.BtnMore);
-            this.plnMenu.Controls.Add(this.BtnPays);
             this.plnMenu.Controls.Add(this.rec1);
             this.plnMenu.Controls.Add(this.btnProyections);
             this.plnMenu.Controls.Add(this.panel9);
@@ -158,25 +154,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnNewClient
-            // 
-            this.btnNewClient.BackgroundImage = global::CreditoCobro.AplicacionPatrono.Properties.Resources.customer_service;
-            this.btnNewClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnNewClient.FlatAppearance.BorderSize = 0;
-            this.btnNewClient.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.btnNewClient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.btnNewClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewClient.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewClient.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnNewClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewClient.Location = new System.Drawing.Point(13, 263);
-            this.btnNewClient.Name = "btnNewClient";
-            this.btnNewClient.Size = new System.Drawing.Size(182, 39);
-            this.btnNewClient.TabIndex = 14;
-            this.btnNewClient.Text = "&Clientes";
-            this.btnNewClient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNewClient.UseVisualStyleBackColor = true;
-            // 
             // BtnMore
             // 
             this.BtnMore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -189,26 +166,6 @@
             this.BtnMore.Size = new System.Drawing.Size(33, 33);
             this.BtnMore.TabIndex = 13;
             this.BtnMore.UseVisualStyleBackColor = true;
-            // 
-            // BtnPays
-            // 
-            this.BtnPays.BackgroundImage = global::CreditoCobro.AplicacionPatrono.Properties.Resources.point_of_service;
-            this.BtnPays.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.BtnPays.FlatAppearance.BorderSize = 0;
-            this.BtnPays.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.BtnPays.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.BtnPays.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnPays.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPays.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnPays.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnPays.Location = new System.Drawing.Point(11, 195);
-            this.BtnPays.Name = "BtnPays";
-            this.BtnPays.Size = new System.Drawing.Size(182, 39);
-            this.BtnPays.TabIndex = 12;
-            this.BtnPays.Text = "&Aplicación de Pagos";
-            this.BtnPays.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnPays.UseVisualStyleBackColor = true;
-            this.BtnPays.Click += new System.EventHandler(this.BtnPays_Click);
             // 
             // rec1
             // 
@@ -276,9 +233,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel plnMenu;
-        private System.Windows.Forms.Button btnNewClient;
         private System.Windows.Forms.Button BtnMore;
-        private System.Windows.Forms.Button BtnPays;
         private System.Windows.Forms.Panel rec1;
         private System.Windows.Forms.Button btnProyections;
         private System.Windows.Forms.Panel panel9;
