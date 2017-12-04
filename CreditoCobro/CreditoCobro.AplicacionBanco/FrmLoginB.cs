@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CreditoCobro.NegocioBanco;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,9 +38,18 @@ namespace CreditoCobro.AplicacionBanco
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            //FrmMainB Form1 = new FrmMainB();
-            //Form1.Show();
-            //this.Hide();
+            Login log = new Login();
+
+            if (log.LoginUsuario(TxtUser.Text.Trim(), TxtPassword.Text.Trim()))
+            {
+                FrmMainB Form1 = new FrmMainB();
+                Form1.Show();
+                this.Hide();
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "No se pudo realizar el login", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
