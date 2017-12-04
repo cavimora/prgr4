@@ -51,7 +51,7 @@ CREATE TABLE [B_Cliente] (
 --CREATE INDEX [ForeignKey] ON  [B_Cliente] ([IdInstitucion]);
 
 CREATE TABLE [B_Credito] (
-  [IdCredito] int,
+  [IdCredito] int identity(1,1),
   [IdCliente] varchar(9),
   [MontoAprobado] decimal(18, 4),
   [Tasa] decimal(18, 4),
@@ -102,6 +102,18 @@ CREATE TABLE [P_Cuota] (
   PRIMARY KEY (IdEmpleado, IdCuota, IdCredito),
   FOREIGN KEY (IdEmpleado) REFERENCES P_Empleado(IdEmpleado)
 );
+
+CREATE TABLE [dbo].[G_Usuarios](
+	[usuario] [nchar](28) NOT NULL,
+	[contrasena] [nchar](128) NOT NULL,
+ CONSTRAINT [PK_G_Usuarios] PRIMARY KEY CLUSTERED 
+(
+	[usuario] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
 
 --CREATE INDEX [Key] ON  [P_Cuota] ([IdCuota], [IdEmpleado], [IdCredito]);
 
