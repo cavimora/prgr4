@@ -77,14 +77,15 @@ namespace CreditoCobro.AplicacionPatrono
             {
                 dtvProyeccion.Rows.Clear();
                 vFileDialog = oFD.FileName;   // guardamos en la variable el documento seleccionado
-                System.Data.DataTable rXML = new System.Data.DataTable();
-                rXML.ReadXml(vFileDialog);
+                //System.Data.DataTable 
+                tXML = new System.Data.DataTable();
+                tXML.ReadXml(vFileDialog);
                 // dtvProyeccion.DataSource = rXML;
-                txtCed.Text = rXML.Rows[0]["Cedula"].ToString();
-                txtNom.Text = rXML.Rows[0]["Nombre"].ToString();
-                txtApe1.Text = rXML.Rows[0]["Apellido 1"].ToString();
-                txtApe2.Text = rXML.Rows[0]["Apellido 2"].ToString();
-                _creditos = ((System.Data.DataTable)rXML.Rows[0]["Proyeccion"]);
+                txtCed.Text = tXML.Rows[0]["Cedula"].ToString();
+                txtNom.Text = tXML.Rows[0]["Nombre"].ToString();
+                txtApe1.Text = tXML.Rows[0]["Apellido 1"].ToString();
+                txtApe2.Text = tXML.Rows[0]["Apellido 2"].ToString();
+                _creditos = ((System.Data.DataTable)tXML.Rows[0]["Creditos"]);
                 dtvCreditos.DataSource = _creditos;
             }
         }
@@ -177,11 +178,11 @@ namespace CreditoCobro.AplicacionPatrono
 
         private void btnNewProjection_Click(object sender, EventArgs e)
         {
-            var index=dtvCreditos.CurrentCell.RowIndex;
-            var monto= double.Parse((_creditos.Rows[index]["Monto"]).ToString());
-            var tasa = double.Parse((_creditos.Rows[index]["Tasa"]).ToString());
-            var plazo = int.Parse((_creditos.Rows[index]["Plazo"]).ToString());
-            dtvProyeccion.DataSource = GetProyeccion(tasa, monto, plazo);
+            //var index=dtvCreditos.CurrentCell.RowIndex;
+            //var monto= double.Parse((_creditos.Rows[index]["Monto"]).ToString());
+            //var tasa = double.Parse((_creditos.Rows[index]["Tasa"]).ToString());
+            //var plazo = int.Parse((_creditos.Rows[index]["Plazo"]).ToString());
+            //dtvProyeccion.DataSource = GetProyeccion(tasa, monto, plazo);
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -192,6 +193,24 @@ namespace CreditoCobro.AplicacionPatrono
             txtApe2.Text = "";
             dtvCreditos.DataSource = null;
             dtvProyeccion.DataSource = null;
+        }
+
+        private void dtvCreditos_Click(object sender, EventArgs e)
+        {
+            var index = dtvCreditos.CurrentCell.RowIndex;
+            dtvProyeccion.DataSource = null;
+            dtvProyeccion.DataSource = _creditos.Rows[index]["Proyeccion"];
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sFD = new SaveFileDialog();
+            sFD.Filter = "XML|*.xml";     //se definen los tipos de datos
+            if (sFD.ShowDialog() == DialogResult.OK)
+            {
+                vFileDialog = sFD.FileName;  //se le asigna un nombre
+                tXML.WriteXml(vFileDialog, XmlWriteMode.WriteSchema);
+            }
         }
     }
 }
