@@ -16,6 +16,11 @@ namespace CreditoCobro.NegocioBanco
         private DtoCredito _credito;
         private Entities _db;
 
+        public Credito()
+        {
+            _decimalPoints = 2;
+        }
+
         public Credito(DtoCredito credito)
         {
             _decimalPoints = 2;
@@ -54,7 +59,7 @@ namespace CreditoCobro.NegocioBanco
             _proyeccion = new List<DtoProyeccion>();
             //int i = 1;
             //while(saldo > 0)
-            for (int i = 0; i < _credito.Plazo; i++)
+            for (int i = 0; i < Plazo; i++)
             {
                 var intereses = Math.Round((saldo * (Tasa / 100)), _decimalPoints, MidpointRounding.AwayFromZero);//*100)/100;
                 var principal = Math.Round((cuota - intereses), _decimalPoints, MidpointRounding.AwayFromZero);//*100)/100;

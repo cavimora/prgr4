@@ -58,7 +58,6 @@ namespace CreditoCobro.AplicacionBanco
                 _proyeccion =_ncredito.GetProyeccion();
                 dtvProyeccion.DataSource = _proyeccion;
                 Proyecciones.AddProyecciones(_proyeccion, _cDetallado.Creditos.ElementAt(index));
-                tXML = llenarXML();
             }
             catch (Exception ex)
             {
@@ -184,6 +183,8 @@ namespace CreditoCobro.AplicacionBanco
 
 
                 DataRow row2 = null;
+                if (_ncredito == null)
+                    _ncredito = new Credito();
                 proyeccion = _ncredito.GetProyeccion(cred.Tasa,cred.Monto,cred.Plazo);
                 foreach (DtoProyeccion dgv in proyeccion)
                 {
@@ -324,6 +325,7 @@ namespace CreditoCobro.AplicacionBanco
 
         private void documentoXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tXML = llenarXML();
             exportarXML();
 
         }
