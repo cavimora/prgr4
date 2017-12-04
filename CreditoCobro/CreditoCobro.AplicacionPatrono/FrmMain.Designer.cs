@@ -114,9 +114,9 @@
             this.metroLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.metroLabel1.Location = new System.Drawing.Point(6, 5);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(85, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(82, 25);
             this.metroLabel1.TabIndex = 11;
-            this.metroLabel1.Text = "Bank App";
+            this.metroLabel1.Text = "Boss App";
             this.metroLabel1.UseCustomBackColor = true;
             this.metroLabel1.UseCustomForeColor = true;
             // 

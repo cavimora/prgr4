@@ -46,6 +46,7 @@
             this.ChShowPsw.TabIndex = 13;
             this.ChShowPsw.Text = "Mostrar Contraseña";
             this.ChShowPsw.UseSelectable = true;
+            this.ChShowPsw.CheckedChanged += new System.EventHandler(this.ChShowPsw_CheckedChanged);
             // 
             // panel1
             // 
@@ -68,6 +69,7 @@
             this.metroButton1.UseCustomBackColor = true;
             this.metroButton1.UseCustomForeColor = true;
             this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // TxtPassword
             // 

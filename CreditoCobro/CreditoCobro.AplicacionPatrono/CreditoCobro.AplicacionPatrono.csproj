@@ -119,6 +119,10 @@
       <Project>{A2BA3CE6-B13A-4877-BD9C-C6EAF3705D36}</Project>
       <Name>CreditoCobro.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CreditoCobro.Negocio\CreditoCobro.NegocioPatrono.csproj">
+      <Project>{C29F5158-E8F4-4D92-A4F1-52037E53ED46}</Project>
+      <Name>CreditoCobro.NegocioPatrono</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\menu21.png" />
