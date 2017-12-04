@@ -31,7 +31,6 @@
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.lbProjections = new MetroFramework.Controls.MetroLabel();
             this.lbCredits = new MetroFramework.Controls.MetroLabel();
-            this.btnNewProjection = new MetroFramework.Controls.MetroButton();
             this.dtvProyeccion = new System.Windows.Forms.DataGridView();
             this.dtvCreditos = new System.Windows.Forms.DataGridView();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +49,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.btnNewProjection = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtvProyeccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditos)).BeginInit();
@@ -83,16 +83,6 @@
             this.lbCredits.Size = new System.Drawing.Size(58, 19);
             this.lbCredits.TabIndex = 30;
             this.lbCredits.Text = "Creditos";
-            // 
-            // btnNewProjection
-            // 
-            this.btnNewProjection.Location = new System.Drawing.Point(631, 278);
-            this.btnNewProjection.Name = "btnNewProjection";
-            this.btnNewProjection.Size = new System.Drawing.Size(119, 37);
-            this.btnNewProjection.TabIndex = 28;
-            this.btnNewProjection.Text = "Generar Proyección";
-            this.btnNewProjection.UseSelectable = true;
-            this.btnNewProjection.Click += new System.EventHandler(this.btnNewProjection_Click);
             // 
             // dtvProyeccion
             // 
@@ -342,6 +332,16 @@
             this.metroLabel4.TabIndex = 40;
             this.metroLabel4.Text = "Apellido 2";
             // 
+            // btnNewProjection
+            // 
+            this.btnNewProjection.Location = new System.Drawing.Point(631, 278);
+            this.btnNewProjection.Name = "btnNewProjection";
+            this.btnNewProjection.Size = new System.Drawing.Size(119, 37);
+            this.btnNewProjection.TabIndex = 28;
+            this.btnNewProjection.Text = "Generar Proyección";
+            this.btnNewProjection.UseSelectable = true;
+            this.btnNewProjection.Click += new System.EventHandler(this.btnNewProjection_Click);
+            // 
             // metroButton2
             // 
             this.metroButton2.Location = new System.Drawing.Point(538, 278);
@@ -390,7 +390,6 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroLabel lbProjections;
         private MetroFramework.Controls.MetroLabel lbCredits;
-        private MetroFramework.Controls.MetroButton btnNewProjection;
         private System.Windows.Forms.DataGridView dtvProyeccion;
         private System.Windows.Forms.DataGridView dtvCreditos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
@@ -409,6 +408,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroButton btnNewProjection;
         private MetroFramework.Controls.MetroButton metroButton2;
     }
 }
