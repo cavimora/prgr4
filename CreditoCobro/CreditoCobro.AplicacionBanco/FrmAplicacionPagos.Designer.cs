@@ -180,7 +180,7 @@
             // 
             // btnPagos
             // 
-            this.btnPagos.Location = new System.Drawing.Point(728, 258);
+            this.btnPagos.Location = new System.Drawing.Point(719, 258);
             this.btnPagos.Name = "btnPagos";
             this.btnPagos.Size = new System.Drawing.Size(119, 37);
             this.btnPagos.TabIndex = 43;
