@@ -52,8 +52,7 @@ namespace CreditoCobro.AplicacionPatrono
                 BtnMore.Location = new Point(162, 8);
                 btnProyections.Enabled = true;
                 //BtnArchives.Enabled = true;
-                BtnPays.Enabled = true;
-                btnNewClient.Enabled = true;
+               
                 //btnNewOper.Enabled = true;
             }
             else
@@ -64,9 +63,7 @@ namespace CreditoCobro.AplicacionPatrono
                 BtnMore.Location = new Point(10, 8);
                 btnProyections.Enabled = false;
                 //bt.Enabled = false;
-                BtnPays.Enabled = false;
-                btnNewClient.Enabled = false;
-                btnNewClient.Enabled = false;
+               
             }
         }
 
@@ -74,8 +71,7 @@ namespace CreditoCobro.AplicacionPatrono
         {
             btnProyections.Enabled = false;
             //BtnArchives.Enabled = false;
-            BtnPays.Enabled = false;
-            btnNewClient.Enabled = false;
+            
         }
         private void CerrarProyecciones(object sender, CancelEventArgs e)
         {
