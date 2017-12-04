@@ -126,6 +126,11 @@ namespace CreditoCobro.AplicacionBanco
                 clientes.Focus();
             }
         }
+
+        private void BtnPays_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 ;

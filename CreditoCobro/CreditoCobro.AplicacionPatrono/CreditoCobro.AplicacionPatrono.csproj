@@ -70,6 +70,12 @@
     <Compile Include="FrmLoginP.Designer.cs">
       <DependentUpon>FrmLoginP.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmInfoCreditos.resx">
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLoginP.resx">
       <DependentUpon>FrmLoginP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,6 +119,27 @@
       <Project>{A2BA3CE6-B13A-4877-BD9C-C6EAF3705D36}</Project>
       <Name>CreditoCobro.DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\credit-card1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\point-of-service1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer-service1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus-symbol.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

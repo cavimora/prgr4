@@ -175,6 +175,7 @@ namespace CreditoCobro.AplicacionBanco
                 row["Monto"] = cred.Monto;
                 row["Plazo"] = cred.Plazo;
                 row["Tasa"] = cred.Tasa;
+                
 
                 DataRow row2 = null;
                 proyeccion = _ncredito.GetProyeccion(cred.Tasa,cred.Monto,cred.Plazo);

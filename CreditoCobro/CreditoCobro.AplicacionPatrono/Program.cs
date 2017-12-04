@@ -16,7 +16,7 @@ namespace CreditoCobro.AplicacionPatrono
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmInfoCreditos());
+            Application.Run(new FrmMain());
         }
     }
 }
