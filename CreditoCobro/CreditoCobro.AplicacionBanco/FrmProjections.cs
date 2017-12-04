@@ -209,8 +209,9 @@ namespace CreditoCobro.AplicacionBanco
             sFD.Filter = "XML|*.xml";     //se definen los tipos de datos
             if (sFD.ShowDialog() == DialogResult.OK)
             {
-                vFileDialog = sFD.FileName;  //se le asigna un nombre
+                vFileDialog = sFD.FileName;  //se le asigna un nombre 
                 tXML.WriteXml(vFileDialog, XmlWriteMode.WriteSchema);
+                llenarXML();
             }
         }
 
