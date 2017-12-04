@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CreditoCobro.NegocioBanco;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,13 +20,19 @@ namespace CreditoCobro.AplicacionBanco
         }
         private void btnPagos_Click(object sender, EventArgs e)
         {
-            cargarXML();
+            foreach (var credito in _creditos.Rows)
+            {
+                var idCred = int.Parse(((System.Data.DataRow)credito)["IdCred"].ToString());
+                var proyecciones = ((System.Data.DataRow)credito)["Proyeccion"];
+                foreach (var proyeccion in ((DataTable)proyecciones).Rows)
+                {
+                    int idProyeccion = int.Parse(((System.Data.DataRow)proyeccion)["Cuota"].ToString());
+                    bool isPago = bool.Parse(((System.Data.DataRow)proyeccion)["isPago"].ToString());
+                    Proyecciones.UpdateProyeccion(idCred, idProyeccion, isPago);
+                }
+            }
         }
-
-        private void FrmAplicacionPagos_Load(object sender, EventArgs e)
-        {
-
-        }
+               
         private System.Data.DataTable _creditos;
         public void cargarXML()
         {
@@ -46,6 +53,23 @@ namespace CreditoCobro.AplicacionBanco
                 _creditos = ((System.Data.DataTable)rXML.Rows[0]["Creditos"]);
                 dtvCreditos.DataSource = _creditos;
             }
+        }
+
+        private void importarDesdeXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cargarXML();
+        }
+
+        private void dtvCreditos_Click(object sender, EventArgs e)
+        {
+            var index = dtvCreditos.CurrentCell.RowIndex;
+            dtvProyeccion.DataSource = null;
+            dtvProyeccion.DataSource = _creditos.Rows[index]["Proyeccion"];
+        }
+
+        private void FrmAplicacionPagos_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

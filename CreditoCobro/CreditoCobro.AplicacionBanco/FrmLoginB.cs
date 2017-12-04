@@ -37,9 +37,9 @@ namespace CreditoCobro.AplicacionBanco
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            FrmMainB Form1 = new FrmMainB();
-            Form1.Show();
-            this.Hide();
+            //FrmMainB Form1 = new FrmMainB();
+            //Form1.Show();
+            //this.Hide();
         }
     }
 }

@@ -232,6 +232,7 @@
             this.dtvCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvCreditos.Size = new System.Drawing.Size(343, 139);
             this.dtvCreditos.TabIndex = 37;
+            this.dtvCreditos.Click += new System.EventHandler(this.dtvCreditos_Click);
             // 
             // Monto
             // 
@@ -279,6 +280,7 @@
             this.importarDesdeXMLToolStripMenuItem.Name = "importarDesdeXMLToolStripMenuItem";
             this.importarDesdeXMLToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.importarDesdeXMLToolStripMenuItem.Text = "Importar desde XML";
+            this.importarDesdeXMLToolStripMenuItem.Click += new System.EventHandler(this.importarDesdeXMLToolStripMenuItem_Click);
             // 
             // cargarDesdeTXTToolStripMenuItem
             // 

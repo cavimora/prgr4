@@ -162,6 +162,7 @@ namespace CreditoCobro.AplicacionBanco
             tCreditos.Columns.Add("Monto");
             tCreditos.Columns.Add("Plazo");
             tCreditos.Columns.Add("Tasa");
+            tCreditos.Columns.Add("IdCred");
             tCreditos.Columns.Add("Proyeccion", typeof(System.Data.DataTable));
 
             foreach (var cred in _cDetallado.Creditos)
@@ -179,7 +180,8 @@ namespace CreditoCobro.AplicacionBanco
                 row["Monto"] = cred.Monto;
                 row["Plazo"] = cred.Plazo;
                 row["Tasa"] = cred.Tasa;
-                
+                row["IdCred"] = cred.Id;
+
 
                 DataRow row2 = null;
                 proyeccion = _ncredito.GetProyeccion(cred.Tasa,cred.Monto,cred.Plazo);
@@ -338,6 +340,7 @@ namespace CreditoCobro.AplicacionBanco
         private void metroButton1_Click(object sender, EventArgs e)
         {
             clearGrids();
+            btnNewProjection.Enabled = true;
         }
         public void clearGrids()
         {
@@ -348,6 +351,18 @@ namespace CreditoCobro.AplicacionBanco
         private void importarDesdeEXCELToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cargarExcel();
+        }
+
+        private void dtvCreditos_Click(object sender, EventArgs e)
+        {
+            var index = dtvCreditos.CurrentCell.RowIndex;
+            dtvProyeccion.DataSource = null;
+            var res = Proyecciones.GetProyecciones(_cDetallado.Creditos.ElementAt(index).Id);
+            if(res.Count > 0)
+            {
+                dtvProyeccion.DataSource = res;
+                btnNewProjection.Enabled = false;
+            }
         }
     }   
 

@@ -86,6 +86,7 @@
             this.dtvCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvCreditos.Size = new System.Drawing.Size(343, 139);
             this.dtvCreditos.TabIndex = 14;
+            this.dtvCreditos.Click += new System.EventHandler(this.dtvCreditos_Click);
             // 
             // Monto
             // 
