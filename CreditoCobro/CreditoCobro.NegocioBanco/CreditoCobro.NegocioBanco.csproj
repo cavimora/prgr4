@@ -59,6 +59,7 @@
     <Compile Include="Clientes.cs" />
     <Compile Include="Credito.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proyecciones.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreditoCobro.DataAccess\CreditoCobro.Datos.csproj">

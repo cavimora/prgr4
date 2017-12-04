@@ -57,7 +57,8 @@ namespace CreditoCobro.AplicacionBanco
                 dtvProyeccion.DataSource = null;
                 _proyeccion =_ncredito.GetProyeccion();
                 dtvProyeccion.DataSource = _proyeccion;
-                tXML = llenarXML(dtvProyeccion);
+                Proyecciones.AddProyecciones(_proyeccion, _cDetallado.Creditos.ElementAt(index));
+                tXML = llenarXML();
             }
             catch (Exception ex)
             {
@@ -136,10 +137,12 @@ namespace CreditoCobro.AplicacionBanco
                 sWriter.Close();
             }
         }
-        public System.Data.DataTable llenarXML(DataGridView gDT)
+        public System.Data.DataTable llenarXML()
         {
 
             List<DtoProyeccion> proyeccion;
+
+
             System.Data.DataTable tCliente = new System.Data.DataTable();
             tCliente.TableName = "Empleado";
             tCliente.Columns.Add("Cedula");
@@ -161,16 +164,17 @@ namespace CreditoCobro.AplicacionBanco
             tCreditos.Columns.Add("Tasa");
             tCreditos.Columns.Add("Proyeccion", typeof(System.Data.DataTable));
 
-            System.Data.DataTable tProyecciones = new System.Data.DataTable();
-
-            tProyecciones.TableName = "InfoProyeccion";
-            tProyecciones.Columns.Add("Cuota");
-            tProyecciones.Columns.Add("Principal");
-            tProyecciones.Columns.Add("Intereses");
-            tProyecciones.Columns.Add("Saldo");
-            tProyecciones.Columns.Add("isPago");
             foreach (var cred in _cDetallado.Creditos)
             {
+                System.Data.DataTable tProyecciones = new System.Data.DataTable();
+
+                tProyecciones.TableName = "Proyeccion";
+                tProyecciones.Columns.Add("Cuota");
+                tProyecciones.Columns.Add("Principal");
+                tProyecciones.Columns.Add("Intereses");
+                tProyecciones.Columns.Add("Saldo");
+                tProyecciones.Columns.Add("isPago");
+
                 DataRow row = tCreditos.NewRow();
                 row["Monto"] = cred.Monto;
                 row["Plazo"] = cred.Plazo;

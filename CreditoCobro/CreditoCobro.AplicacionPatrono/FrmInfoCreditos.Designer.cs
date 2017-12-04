@@ -50,6 +50,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtvProyeccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditos)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -119,6 +120,7 @@
             this.dtvCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvCreditos.Size = new System.Drawing.Size(343, 139);
             this.dtvCreditos.TabIndex = 25;
+            this.dtvCreditos.Click += new System.EventHandler(this.dtvCreditos_Click);
             // 
             // Monto
             // 
@@ -340,11 +342,22 @@
             this.metroLabel4.TabIndex = 40;
             this.metroLabel4.Text = "Apellido 2";
             // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(538, 278);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(87, 37);
+            this.metroButton2.TabIndex = 41;
+            this.metroButton2.Text = "Exportar";
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
+            // 
             // FrmInfoCreditos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 779);
+            this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
@@ -396,5 +409,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroButton metroButton2;
     }
 }
